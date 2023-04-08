@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "297824916976",
+    "project_id": "cnsc-news-and-update-971f1",
+    "storage_bucket": "cnsc-news-and-update-971f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297824916976:android:aab803bdb992cdbd67b935",
+        "android_client_info": {
+          "package_name": "com.bee.cnscnewsandupdate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297824916976-5tj6g6bvcvlfie6fr69330ov9qe7bcg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD229iE1XExSYz0NRZEoMPLJsXBVi7_IhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297824916976-5tj6g6bvcvlfie6fr69330ov9qe7bcg9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

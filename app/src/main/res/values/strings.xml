@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CNSC News and Update</string>
+    <string name="login_to_your_cnsc_nu_account">Login to your CNSC N &amp; U Account</string>
+    <string name="terms_in_create">By clicking Create Account, you confirm that you agree to the Terms of Use, and you acknowledge that you have read our Privacy Policy. You further acknowledge that CNSC News &amp; Update may use your email address for marketing, ads and other offers.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_label1">Todays News</string>
+    <string name="tab_label2">Announcement</string>
+    <string name="tab_label3">Department News</string>
+    <string name="tab_label4">Breakthrough</string>
+</resources>

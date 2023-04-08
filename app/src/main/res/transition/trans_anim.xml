@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    <explode-->
+<!--        android:duration="300" />-->
+
+<!--    <autoTransition-->
+<!--        android:duration="1000" />-->
+
+<!--    <slide-->
+<!--        android:duration="100" />-->
+
+<!--    <changeImageTransform-->
+<!--        android:duration="300" />-->
+
+<!--    <arcMotion-->
+<!--        android:duration="300" />-->
+
+<!--    <fade-->
+<!--        android:duration="100" />-->
+
+<!--    <changeScroll-->
+<!--        android:duration="1000" />-->
+
+<!--    <pathMotion-->
+<!--        android:duration="1000" />-->
+
+</transitionSet>

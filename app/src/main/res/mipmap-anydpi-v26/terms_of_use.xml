@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/terms_of_use_background"/>
+    <foreground android:drawable="@drawable/terms_of_use_foreground"/>
+</adaptive-icon>

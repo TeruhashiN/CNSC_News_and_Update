@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fdffff"
+    tools:context=".MainActivity">
+
+
+    <View
+        android:id="@+id/homepage_divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="644dp"
+        android:background="?android:attr/listDivider"
+        android:foregroundTint="#F4DCDC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/homepage_button"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#FCFEFE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/homepage_divider"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/homepage_blue_foreground" />
+
+    <ImageButton
+        android:id="@+id/search_button"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#FCFEFE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homepage_button"
+        app:layout_constraintTop_toTopOf="@+id/homepage_button"
+        app:srcCompat="@drawable/search_foreground" />
+
+    <ImageButton
+        android:id="@+id/news_button"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="#FCFEFE"
+        android:onClick="onclicknews"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/search_button"
+        app:layout_constraintTop_toTopOf="@+id/search_button"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/news_foreground" />
+
+    <ImageButton
+        android:id="@+id/setting_button"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="#FCFEFE"
+        android:onClick="onclicksettings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toEndOf="@+id/news_button"
+        app:layout_constraintTop_toTopOf="@+id/news_button"
+        app:layout_constraintVertical_bias="0.058"
+        app:srcCompat="@drawable/setting_foreground" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
