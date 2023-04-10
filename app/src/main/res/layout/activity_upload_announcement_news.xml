@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Upload_todays_news">
+    android:layout_height="match_parent"
+    tools:context=".Upload_announcement_news">
+
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -30,7 +31,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Today's News"
+                android:text="Announcement"
                 android:textAlignment="center"
                 android:textColor="@color/gray"
                 android:textSize="30sp" />

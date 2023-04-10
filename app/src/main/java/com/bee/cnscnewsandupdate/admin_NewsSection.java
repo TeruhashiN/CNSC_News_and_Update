@@ -50,8 +50,9 @@ public class admin_NewsSection extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_NewsSection.this, Upload_todays_news.class);
+                Intent intent = new Intent(admin_NewsSection.this, Upload_announcement_news.class);
                 startActivity(intent);
+
 
             }
         });

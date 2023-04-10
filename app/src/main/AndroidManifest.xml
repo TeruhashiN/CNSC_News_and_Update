@@ -14,7 +14,7 @@
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
         <activity
-            android:name=".Upload_todays_news"
+            android:name=".Upload_announcement_news"
             android:exported="false" />
         <activity
             android:name=".loginregister"
