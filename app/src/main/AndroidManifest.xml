@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
+        <activity
+            android:name=".Upload_todays_news"
+            android:exported="false" />
+        <activity
+            android:name=".loginregister"
+            android:exported="false" />
         <activity
             android:name=".NewsSection"
             android:exported="false" />
@@ -24,7 +32,7 @@
             android:name=".Settings"
             android:exported="false" />
         <activity
-            android:name=".loginregister"
+            android:name=".admin_NewsSection"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
