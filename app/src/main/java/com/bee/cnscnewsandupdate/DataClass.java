@@ -29,4 +29,10 @@ public class DataClass {
         this.dataDate = dataDate;
         this.dataImage = dataImage;
     }
+
+    public DataClass() {
+
+    }
+
+
 }

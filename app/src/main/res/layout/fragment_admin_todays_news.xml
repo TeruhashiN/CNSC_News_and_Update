@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".admin_todays_news">
+    tools:context=".Administrator.admin_todays_news">
 
     <TextView
         android:layout_width="match_parent"

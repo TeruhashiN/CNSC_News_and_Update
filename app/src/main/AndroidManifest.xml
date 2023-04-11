@@ -14,28 +14,31 @@
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
         <activity
-            android:name=".upload_breakthrough_news"
+            android:name=".DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Upload_announcement_news"
+            android:name=".uploading_data.upload_breakthrough_news"
             android:exported="false" />
         <activity
-            android:name=".admin_NewsSection"
+            android:name=".uploading_data.Upload_announcement_news"
             android:exported="false" />
         <activity
-            android:name=".NewsSection"
+            android:name=".login_and_register.loginregister"
             android:exported="false" />
         <activity
-            android:name=".createaccount"
+            android:name=".users_ui.NewsSection"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".login_and_register.createaccount"
             android:exported="false" />
         <activity
-            android:name=".Settings"
+            android:name=".users_ui.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".loginregister"
+            android:name=".users_ui.Settings"
+            android:exported="false" />
+        <activity
+            android:name=".Administrator.admin_NewsSection"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.Administrator;
 
 import android.os.Bundle;
 
@@ -8,15 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link todays_news#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class todays_news extends Fragment {
+import com.bee.cnscnewsandupdate.R;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+public class admin_todays_news extends Fragment {
+
+
+
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -24,21 +23,11 @@ public class todays_news extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public todays_news() {
-        // Required empty public constructor
+    public admin_todays_news() {
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment todays_news.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static todays_news newInstance(String param1, String param2) {
-        todays_news fragment = new todays_news();
+    public static admin_todays_news newInstance(String param1, String param2) {
+        admin_todays_news fragment = new admin_todays_news();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,7 +47,6 @@ public class todays_news extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_todays_news, container, false);
+        return inflater.inflate(R.layout.fragment_admin_todays_news, container, false);
     }
 }

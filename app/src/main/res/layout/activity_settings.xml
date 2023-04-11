@@ -6,7 +6,7 @@
     android:background="@color/white"
     style="@style/SCREEN"
     android:layout_height="match_parent"
-    tools:context=".Settings">
+    tools:context=".users_ui.Settings">
 
     <ScrollView
         android:id="@+id/main_scroll"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin_breakthrough_news">
+    tools:context=".Administrator.admin_breakthrough_news">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

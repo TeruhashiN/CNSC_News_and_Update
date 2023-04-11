@@ -1,27 +1,24 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.users_ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.bee.cnscnewsandupdate.PageAdapter;
+import com.bee.cnscnewsandupdate.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class admin_NewsSection extends AppCompatActivity {
-
-    FloatingActionButton fab;
+public class NewsSection extends AppCompatActivity {
 
     private String[] tabs = {"Today's News", "Announcement", "Department News", "Breakthrough   "};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_news_section);
+        setContentView(R.layout.activity_news_section);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -37,23 +34,14 @@ public class admin_NewsSection extends AppCompatActivity {
         final PageAdapter adapter = new PageAdapter(getSupportFragmentManager(), getLifecycle());
         viewPager.setAdapter(adapter);
 
-        adapter.addFragment(new admin_todays_news());
-        adapter.addFragment(new admin_announcement_news());
-        adapter.addFragment(new admin_department_news());
-        adapter.addFragment(new admin_breakthrough_news());
+        adapter.addFragment(new todays_news());
+        adapter.addFragment(new announcement_news());
+        adapter.addFragment(new department_news());
+        adapter.addFragment(new breakthrough_news());
 
         viewPager.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText(tabs[position])).attach();
 
-        fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(admin_NewsSection.this, Upload_announcement_news.class);
-                startActivity(intent);
-
-            }
-        });
     }
 }

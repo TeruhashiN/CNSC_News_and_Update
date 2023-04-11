@@ -1,4 +1,4 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.users_ui;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bee.cnscnewsandupdate.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link announcement_news#newInstance} factory method to
+ * Use the {@link todays_news#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class announcement_news extends Fragment {
+public class todays_news extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class announcement_news extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public announcement_news() {
+    public todays_news() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class announcement_news extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment announcement_news.
+     * @return A new instance of fragment todays_news.
      */
     // TODO: Rename and change types and number of parameters
-    public static announcement_news newInstance(String param1, String param2) {
-        announcement_news fragment = new announcement_news();
+    public static todays_news newInstance(String param1, String param2) {
+        todays_news fragment = new todays_news();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class announcement_news extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_announcement_news, container, false);
+        return inflater.inflate(R.layout.fragment_todays_news, container, false);
     }
 }

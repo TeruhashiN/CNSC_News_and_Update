@@ -1,14 +1,13 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.users_ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-
+import com.bee.cnscnewsandupdate.R;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.users_ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.bee.cnscnewsandupdate.R;
+import com.bee.cnscnewsandupdate.login_and_register.loginregister;
 
 public class Settings extends AppCompatActivity {
     ImageButton homepage_button, login_image_button;
