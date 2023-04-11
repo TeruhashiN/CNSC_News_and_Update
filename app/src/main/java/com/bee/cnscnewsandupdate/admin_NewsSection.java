@@ -53,7 +53,6 @@ public class admin_NewsSection extends AppCompatActivity {
                 Intent intent = new Intent(admin_NewsSection.this, Upload_announcement_news.class);
                 startActivity(intent);
 
-
             }
         });
     }
