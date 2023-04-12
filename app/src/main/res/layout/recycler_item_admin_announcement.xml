@@ -23,15 +23,13 @@
             android:layout_height="232dp"
             android:layout_alignParentTop="true"
             android:padding="8dp"
-            android:scaleType="centerCrop"
             android:src="@drawable/uploading_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.125"
-            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+            app:layout_constraintVertical_bias="0.125" />
 
         <TextView
             android:id="@+id/recTitle"

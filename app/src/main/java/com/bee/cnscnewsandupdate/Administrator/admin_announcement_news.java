@@ -1,7 +1,13 @@
 package com.bee.cnscnewsandupdate.Administrator;
 
+import static com.bee.cnscnewsandupdate.R.id.recyclerView;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bee.cnscnewsandupdate.DataClass;
+import com.bee.cnscnewsandupdate.MyAdapter;
 import com.bee.cnscnewsandupdate.R;
+import com.bee.cnscnewsandupdate.users_ui.MainActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
@@ -21,46 +32,24 @@ import java.util.ArrayList;
 //32 mins
 
 
-public class admin_announcement_news extends Fragment {
+public class admin_announcement_news extends Fragment{
 
     RecyclerView recyclerView;
     List<DataClass> dataList;
     DatabaseReference databaseReference;
     ValueEventListener eventListener;
 
-
-
-    // below is not needed
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    private String mParam1;
-    private String mParam2;
-
-    // upper not needed
-
     public admin_announcement_news() {
 
     }
     public static admin_announcement_news newInstance(String param1, String param2) {
         admin_announcement_news fragment = new admin_announcement_news();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
 
 
     }
@@ -69,12 +58,53 @@ public class admin_announcement_news extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
-//
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(admin_announcement_news.this, 0);
 
-        // Inflate the layout for this fragment
+//        View inflate = inflater.inflate(R.layout.fragment_admin_announcement_news, container, false);
+//        return inflate;
+
         return inflater.inflate(R.layout.fragment_admin_announcement_news, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setCancelable(false);
+        builder.setView(R.layout.progress_layout);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dataList = new ArrayList<>();
+        MyAdapter adapter = new MyAdapter(getContext(), dataList);
+        recyclerView.setAdapter(adapter);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Announcement News");
+        dialog.show();
+
+        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dataList.clear();
+                for (DataSnapshot itemSnapshot: snapshot.getChildren()){
+                    DataClass dataClass = itemSnapshot.getValue(DataClass.class);
+                    dataList.add(dataClass);
+                }
+                adapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                dialog.dismiss();
+
+            }
+        });
+
 
     }
 }

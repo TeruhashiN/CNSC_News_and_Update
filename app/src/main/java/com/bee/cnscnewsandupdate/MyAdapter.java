@@ -51,8 +51,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
                 context.startActivity(intent);
 
-
-
             }
         });
 
