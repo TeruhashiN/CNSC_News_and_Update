@@ -29,8 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 import java.util.ArrayList;
 
-//32 mins
-
 
 public class admin_announcement_news extends Fragment{
 
