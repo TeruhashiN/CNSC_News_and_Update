@@ -80,7 +80,7 @@ public class Upload_announcement_news extends AppCompatActivity {
         });
     }
     public void saveData() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images / Announcement Section")
                 .child(uri.getLastPathSegment());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Upload_announcement_news.this);

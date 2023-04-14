@@ -82,7 +82,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/gray"
-                android:text="Save"
+                android:text="Upload"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 

@@ -19,7 +19,7 @@ public class admin_NewsSection extends AppCompatActivity {
 
     FloatingActionButton fab;
 
-    private String[] tabs = {"Today's News", "Announcement", "Department News", "Breakthrough   "};
+    private String[] tabs = {"Today's News", "Announcement", "Department News", "Breakthrough"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

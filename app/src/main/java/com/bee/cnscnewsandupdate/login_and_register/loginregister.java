@@ -12,12 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bee.cnscnewsandupdate.Administrator.admin_NewsSection;
 import com.bee.cnscnewsandupdate.users_ui.MainActivity;
 import com.bee.cnscnewsandupdate.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class loginregister extends AppCompatActivity {
 
@@ -26,6 +28,8 @@ public class loginregister extends AppCompatActivity {
     private FirebaseAuth auth;
 
     private Button loginButton;
+
+    private static final String ADMIN_UID = "00oGDrHUDjNV8FptXWQ4SwEA8qX2"; // admin code
 
     private EditText loginEmail, loginPassword;
 
@@ -53,9 +57,16 @@ public class loginregister extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
-                                        Toast.makeText(loginregister.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(loginregister.this, MainActivity.class));
-                                        finish();
+                                        FirebaseUser user = auth.getCurrentUser();
+                                        if (user != null && user.getUid().equals(ADMIN_UID)) {
+                                            Toast.makeText(loginregister.this, "Admin Login Successfully", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(loginregister.this, admin_NewsSection.class));
+                                            finish();
+                                        } else {
+                                            Toast.makeText(loginregister.this, "User Login Successfully", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(loginregister.this, MainActivity.class));
+                                            finish();
+                                        }
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
@@ -74,8 +85,6 @@ public class loginregister extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     public void onclickregisteraccount(View view) {

@@ -23,7 +23,7 @@
             android:name=".uploading_data.Upload_announcement_news"
             android:exported="false" />
         <activity
-            android:name=".login_and_register.loginregister"
+            android:name=".Administrator.admin_NewsSection"
             android:exported="false" />
         <activity
             android:name=".users_ui.NewsSection"
@@ -38,7 +38,7 @@
             android:name=".users_ui.Settings"
             android:exported="false" />
         <activity
-            android:name=".Administrator.admin_NewsSection"
+            android:name=".login_and_register.loginregister"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
