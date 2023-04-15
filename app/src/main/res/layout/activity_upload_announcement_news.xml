@@ -67,14 +67,14 @@
                 android:gravity="start|center_vertical" />
 
             <EditText
+                android:id="@+id/uploadDate"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/uploadDate"
-                android:background="@drawable/rectangle_border"
                 android:layout_marginTop="20dp"
-                android:padding="16dp"
+                android:background="@drawable/rectangle_border"
+                android:gravity="start|center_vertical"
                 android:hint="Date"
-                android:gravity="start|center_vertical" />
+                android:padding="16dp" />
 
             <Button
                 android:id="@+id/saveButton"

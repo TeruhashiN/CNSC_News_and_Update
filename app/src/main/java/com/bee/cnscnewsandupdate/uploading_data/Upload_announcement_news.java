@@ -28,6 +28,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Upload_announcement_news extends AppCompatActivity {
 
     ImageView uploadImage;
@@ -75,6 +78,13 @@ public class Upload_announcement_news extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Get the current date and time
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+                String dateTime = dateFormat.format(calendar.getTime());
+
+                // Set the value of the uploadDate EditText with the current date and time
+                uploadDate.setText(dateTime);
                 saveData();
             }
         });
