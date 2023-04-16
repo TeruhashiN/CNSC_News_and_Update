@@ -135,7 +135,7 @@ public class Upload_announcement_news extends AppCompatActivity {
         long timestamp = System.currentTimeMillis();
 
         // Store the data under the timestamp key
-        FirebaseDatabase.getInstance().getReference("Announcement News").child(String.valueOf(title + ": " + timestamp))
+        FirebaseDatabase.getInstance().getReference("Announcement News").child(String.valueOf(timestamp))
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

@@ -31,47 +31,47 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.125" />
 
+
         <TextView
             android:id="@+id/recTitle"
-            android:layout_width="87dp"
-            android:layout_height="27dp"
+            android:layout_width="324dp"
+            android:layout_height="23dp"
             android:text="Title"
+            android:textStyle="bold"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.086"
+            app:layout_constraintHorizontal_bias="0.565"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recImage"
-            app:layout_constraintVertical_bias="0.183" />
-
+            app:layout_constraintVertical_bias="0.24" />
 
         <TextView
             android:id="@+id/recDate"
-            android:layout_width="87dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="24dp"
+            android:layout_width="325dp"
+            android:layout_height="22dp"
             android:text="Date"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/recDesc"
-            app:layout_constraintHorizontal_bias="0.033"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.565"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recTitle"
-            app:layout_constraintVertical_bias="0.542" />
+            app:layout_constraintVertical_bias="0.515" />
 
         <TextView
             android:id="@+id/recDesc"
             android:layout_width="140dp"
             android:layout_height="12dp"
+            android:maxLines="0"
             android:text="Description"
             android:textSize="8sp"
-            android:maxLines="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.591"
+            app:layout_constraintHorizontal_bias="0.935"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recImage"
-            app:layout_constraintVertical_bias="0.956" />
+            app:layout_constraintVertical_bias="0.967" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
