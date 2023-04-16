@@ -30,6 +30,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class Upload_announcement_news extends AppCompatActivity {
 
@@ -80,8 +82,10 @@ public class Upload_announcement_news extends AppCompatActivity {
             public void onClick(View view) {
                 // Get the current date and time
                 Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a", Locale.getDefault());
+                dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Manila"));
                 String dateTime = dateFormat.format(calendar.getTime());
+
 
                 // Set the value of the uploadDate EditText with the current date and time
                 uploadDate.setText(dateTime);
@@ -123,11 +127,15 @@ public class Upload_announcement_news extends AppCompatActivity {
 
         String title = uploadTitle.getText().toString();
         String desc = uploadDesc.getText().toString();
-        String lang = uploadDate.getText().toString();
+        String date = uploadDate.getText().toString();
 
-        DataClass dataClass = new DataClass(title, desc, lang, imageURL);
+        DataClass dataClass = new DataClass(title, desc, date, imageURL);
 
-        FirebaseDatabase.getInstance().getReference("Announcement News").child(title)
+        // Generate a timestamp as the key
+        long timestamp = System.currentTimeMillis();
+
+        // Store the data under the timestamp key
+        FirebaseDatabase.getInstance().getReference("Announcement News").child(String.valueOf(title + ": " + timestamp))
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -144,5 +152,6 @@ public class Upload_announcement_news extends AppCompatActivity {
                 });
 
     }
+
 
 }
