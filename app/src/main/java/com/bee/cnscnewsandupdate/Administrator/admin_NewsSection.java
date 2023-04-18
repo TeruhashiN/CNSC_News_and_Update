@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.bee.cnscnewsandupdate.PageAdapter;
@@ -55,8 +57,23 @@ public class admin_NewsSection extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(admin_NewsSection.this, Upload_announcement_news.class);
                 startActivity(intent);
-
+            }
+        });
+        fab.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        ObjectAnimator.ofFloat(fab, "alpha", 1.0f).start();
+                        return false;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        ObjectAnimator.ofFloat(fab, "alpha", 0.5f).start();
+                        return false;
+                }
+                return false;
             }
         });
     }
 }
+

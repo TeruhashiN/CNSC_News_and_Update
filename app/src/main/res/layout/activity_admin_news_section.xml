@@ -22,9 +22,10 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:subtitleTextColor="@color/white" />
 
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
-        android:layout_width="413dp"
+        android:layout_width="match_parent"
         android:layout_height="59dp"
         android:layout_below="@+id/toolbar"
         android:background="@color/purple_200"
