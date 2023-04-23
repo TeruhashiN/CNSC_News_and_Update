@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -36,6 +38,9 @@ public class announcement_news extends Fragment {
     List<DataClass> dataList;
     DatabaseReference databaseReference;
     ValueEventListener eventListener;
+
+    SearchView searchView;
+    MyAdapter adapter;
 
     public announcement_news() {
 
@@ -50,7 +55,7 @@ public class announcement_news extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,7 +67,13 @@ public class announcement_news extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        searchView = view.findViewById(R.id.search);
+        if (searchView != null) {
+            searchView.clearFocus();
+        }
+
+
+        recyclerView = view.findViewById(R.id.recyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 
@@ -73,9 +84,10 @@ public class announcement_news extends Fragment {
         dialog.show();
 
         dataList = new ArrayList<>();
-        MyAdapter adapter = new MyAdapter(getContext(), dataList);
+        adapter = new MyAdapter(getContext(), dataList);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true));
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Announcement News");
         dialog.show();
@@ -84,7 +96,7 @@ public class announcement_news extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dataList.clear();
-                for (DataSnapshot itemSnapshot: snapshot.getChildren()){
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     DataClass dataClass = itemSnapshot.getValue(DataClass.class);
                     dataList.add(dataClass);
                 }
@@ -99,7 +111,33 @@ public class announcement_news extends Fragment {
             }
         });
 
+        if (searchView != null) {
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
 
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    searchList(newText);
+                    return true;
+                }
+            });
+        }
+    }
+
+    public void searchList(String text) {
+        ArrayList<DataClass> searchList = new ArrayList<>();
+        for (DataClass dataClass: dataList) {
+            if (dataClass.getDataTitle().toLowerCase().contains(text.toLowerCase())) {
+                searchList.add(dataClass);
+            }
+        }
+        adapter.searchDateList(searchList);
     }
 
 }
+
+
+

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".users_ui.NewsSection">
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -21,11 +22,28 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:subtitleTextColor="@color/white" />
 
+
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:id="@+id/search"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/rectangle_searchbar"-->
+<!--        android:focusable="false"-->
+<!--        app:closeIcon="@drawable/clear_bar"-->
+<!--        app:iconifiedByDefault="false"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:queryHint="Search..."-->
+<!--        app:searchHintIcon="@null"-->
+<!--        app:searchIcon="@drawable/search_bar" />-->
+
+
+    <!--    for width 375dp-->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
-        android:layout_width="413dp"
+        android:layout_width="match_parent"
         android:layout_height="59dp"
-        android:layout_below="@+id/toolbar"
         android:background="@color/purple_200"
         android:minHeight="?attr/actionBarSize"
         android:orientation="horizontal"
@@ -41,14 +59,14 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"
-        android:layout_width="375dp"
-        android:layout_height="591dp"
+        android:layout_width="match_parent"
+        android:layout_height="595dp"
         android:layout_below="@id/tab_layout"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.809" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

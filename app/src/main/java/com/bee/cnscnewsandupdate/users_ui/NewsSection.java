@@ -1,11 +1,13 @@
 package com.bee.cnscnewsandupdate.users_ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
+import com.bee.cnscnewsandupdate.MyAdapter;
 import com.bee.cnscnewsandupdate.PageAdapter;
 import com.bee.cnscnewsandupdate.R;
 import com.google.android.material.tabs.TabLayout;
@@ -15,13 +17,15 @@ public class NewsSection extends AppCompatActivity {
 
     private String[] tabs = {"Today's News", "Announcement", "Department News", "Breakthrough   "};
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_section);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
 
@@ -44,4 +48,8 @@ public class NewsSection extends AppCompatActivity {
                 (tab, position) -> tab.setText(tabs[position])).attach();
 
     }
+
+
+
+
 }
