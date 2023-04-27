@@ -15,7 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class NewsSection extends AppCompatActivity {
 
-    private String[] tabs = {"Today's News", "Announcement", "Department News", "Breakthrough   "};
+    private String[] tabs = {"Today's News", "Announcement", "Department News", "Breakthrough"};
 
 
     @Override

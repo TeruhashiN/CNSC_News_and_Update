@@ -26,7 +26,8 @@
             android:name=".Administrator.admin_NewsSection"
             android:exported="false" />
         <activity
-            android:name=".login_and_register.loginregister"
+            android:windowSoftInputMode="adjustPan"
+            android:name=".users_ui.NewsSection"
             android:exported="false" />
         <activity
             android:name=".login_and_register.createaccount"
@@ -38,8 +39,7 @@
             android:name=".users_ui.Settings"
             android:exported="false" />
         <activity
-            android:windowSoftInputMode="adjustPan"
-            android:name=".users_ui.NewsSection"
+            android:name=".login_and_register.loginregister"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

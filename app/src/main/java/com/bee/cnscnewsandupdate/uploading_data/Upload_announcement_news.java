@@ -8,13 +8,17 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.DataClass;
@@ -28,12 +32,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.TimeZone;
+
 
 public class Upload_announcement_news extends AppCompatActivity {
+
+    int hour1, minute1;
 
     ImageView uploadImage;
     Button saveButton;
@@ -51,6 +56,14 @@ public class Upload_announcement_news extends AppCompatActivity {
         uploadDesc = findViewById(R.id.uploadDesc);
         uploadDate = findViewById(R.id.uploadDate);
         saveButton = findViewById(R.id.saveButton);
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
 
         ActivityResultLauncher<Intent>activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -77,23 +90,83 @@ public class Upload_announcement_news extends AppCompatActivity {
             }
         });
 
+        uploadDate.setOnClickListener(v -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view1, int year1, int month1, int dayOfMonth) {
+                    month1 = month1 + 1;
+                    String date = dayOfMonth + "/" + month1 + "/" + year1;
+                    uploadDate.setText(date);
+
+                    // Create a TimePickerDialog to allow the user to select a time
+                    TimePickerDialog timePickerDialog = new TimePickerDialog(Upload_announcement_news.this, new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                            // Convert 24-hour format to 12-hour format
+                            String AM_PM;
+                            if (hourOfDay < 12) {
+                                AM_PM = "AM";
+                                if (hourOfDay == 0) {
+                                    hour1 = 12;
+                                } else {
+                                    hour1 = hourOfDay;
+                                }
+                            } else {
+                                AM_PM = "PM";
+                                if (hourOfDay == 12) {
+                                    hour1 = 12;
+                                } else {
+                                    hour1 = hourOfDay - 12;
+                                }
+                            }
+                            // Format the time
+                            String time = String.format(Locale.getDefault(), "%02d:%02d %s", hour1, minute, AM_PM);
+                            uploadDate.setText(uploadDate.getText() + " " + time);
+                        }
+                    }, hour, minute, false); // By typing a False, it will make 24 hours into AM and PM naisu desu
+                    timePickerDialog.show();
+                }
+            }, year, month, day);
+            datePickerDialog.show();
+        });
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get the current date and time
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a", Locale.getDefault());
-                dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Manila"));
-                String dateTime = dateFormat.format(calendar.getTime());
+                // Check if the EditText fields are empty
+                if (uploadTitle.getText().toString().isEmpty() ||
+                        uploadDesc.getText().toString().isEmpty() ||
+                        uploadDate.getText().toString().isEmpty()) {
 
+                    // Show a dialog box with an error message
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Upload_announcement_news.this);
+                    builder.setMessage("Please fill in all the fields");
+                    builder.setPositiveButton("OK", null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
 
-                // Set the value of the uploadDate EditText with the current date and time
-                uploadDate.setText(dateTime);
-                saveData();
+                } else {
+                    saveData();
+                }
             }
         });
+
+
     }
     public void saveData() {
+        if (uploadTitle.getText().toString().isEmpty()) {
+            uploadTitle.setError("Title is required");
+            return;
+        }
+        if (uploadDesc.getText().toString().isEmpty()) {
+            uploadDesc.setError("Description is required");
+            return;
+        }
+        if (uri == null) {
+            Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images / Announcement Section")
                 .child(uri.getLastPathSegment());
 
@@ -131,11 +204,7 @@ public class Upload_announcement_news extends AppCompatActivity {
 
         DataClass dataClass = new DataClass(title, desc, date, imageURL);
 
-        // Generate a timestamp as the key
-        long timestamp = System.currentTimeMillis();
-
-        // Store the data under the timestamp key
-        FirebaseDatabase.getInstance().getReference("Announcement News").child(String.valueOf(timestamp))
+        FirebaseDatabase.getInstance().getReference("Announcement News").child(String.valueOf(title))
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
