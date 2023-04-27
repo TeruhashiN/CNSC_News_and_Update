@@ -8,8 +8,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_scroll"
-        android:layout_width="412dp"
-        android:layout_height="731dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F7F3ED"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,29 +22,30 @@
             android:id="@+id/login_to_your_account"
             android:layout_width="290dp"
             android:layout_height="24dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="36dp"
             android:text="@string/login_to_your_cnsc_nu_account"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/news_image"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/news_image"
+            app:layout_constraintTop_toBottomOf="@+id/news_image" />
 
         <EditText
             android:id="@+id/email_login"
             android:layout_width="345dp"
             android:layout_height="50dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rectancle"
             android:drawableLeft="@drawable/baseline_person_24"
             android:ems="10"
             android:hint="  Email"
-            android:background="@drawable/rectancle"
             android:inputType="textEmailAddress"
             android:padding="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.485"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/login_to_your_account"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="@+id/login_to_your_account"
             app:layout_constraintTop_toBottomOf="@+id/login_to_your_account" />
 
         <EditText
@@ -107,18 +109,20 @@
             app:layout_constraintTop_toBottomOf="@+id/forgot_password"
             app:layout_constraintVertical_bias="0.031" />
 
+        <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="291dp"
+            android:layout_height="138dp"
+            android:layout_marginTop="124dp"
+            android:background="#F7F3ED"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/news_image" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/homepage_divider"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        android:foregroundTint="#F4DCDC"
-        app:layout_constraintBottom_toBottomOf="@+id/main_scroll"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
