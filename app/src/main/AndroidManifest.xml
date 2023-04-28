@@ -26,17 +26,14 @@
             android:name=".Administrator.admin_NewsSection"
             android:exported="false" />
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".users_ui.NewsSection"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".login_and_register.createaccount"
             android:exported="false" />
         <activity
             android:name=".users_ui.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".users_ui.Settings"
             android:exported="false" />
         <activity
             android:name=".login_and_register.loginregister"

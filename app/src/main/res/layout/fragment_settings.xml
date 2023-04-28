@@ -6,12 +6,12 @@
     android:background="@color/white"
     style="@style/SCREEN"
     android:layout_height="match_parent"
-    tools:context=".users_ui.Settings">
+    tools:context=".users_ui.SettingsFragment">
 
     <ScrollView
         android:id="@+id/main_scroll"
-        android:layout_width="414dp"
-        android:layout_height="646dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/homepage_divider"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
 
@@ -420,60 +420,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/homepage_button"
-        android:layout_width="55dp"
-        android:layout_height="53dp"
-        android:onClick="onclickhomepage"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FCFEFE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homepage_divider"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/homepage_foreground" />
-
-    <ImageButton
-        android:id="@+id/search_button"
-        android:layout_width="55dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FCFEFE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/homepage_button"
-        app:layout_constraintTop_toTopOf="@+id/homepage_button"
-        app:srcCompat="@drawable/search_foreground" />
-
-    <ImageButton
-        android:id="@+id/news_button"
-        android:layout_width="55dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="32dp"
-        android:backgroundTint="#FCFEFE"
-        android:onClick="onclicknews"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/search_button"
-        app:layout_constraintTop_toTopOf="@+id/search_button"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/news_foreground" />
-
-    <ImageButton
-        android:id="@+id/setting_button"
-        android:layout_width="55dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="32dp"
-        android:backgroundTint="#FCFEFE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintStart_toEndOf="@+id/news_button"
-        app:layout_constraintTop_toTopOf="@+id/news_button"
-        app:layout_constraintVertical_bias="0.058"
-        app:srcCompat="@drawable/setting_blue_foreground" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
