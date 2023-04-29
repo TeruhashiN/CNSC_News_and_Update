@@ -1,4 +1,4 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.Announcement_data;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bee.cnscnewsandupdate.R;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;

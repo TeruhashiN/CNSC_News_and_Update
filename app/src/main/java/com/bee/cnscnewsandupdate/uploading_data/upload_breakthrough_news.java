@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bee.cnscnewsandupdate.DataClass;
+import com.bee.cnscnewsandupdate.Announcement_data.DataClass;
 import com.bee.cnscnewsandupdate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;

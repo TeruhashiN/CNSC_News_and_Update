@@ -1,14 +1,12 @@
 package com.bee.cnscnewsandupdate.users_ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
-import com.bee.cnscnewsandupdate.MyAdapter;
-import com.bee.cnscnewsandupdate.PageAdapter;
+import com.bee.cnscnewsandupdate.Announcement_data.PageAdapter;
 import com.bee.cnscnewsandupdate.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -23,8 +21,15 @@ public class NewsSection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_section);
 
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+
+
+
+
+
 
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);

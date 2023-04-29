@@ -47,6 +47,8 @@ public class createaccount extends AppCompatActivity {
                 }
                 if (pass.isEmpty()) {
                     signupPassword.setError("Password cannot be empty");
+                } else if (!isPasswordStrong(pass)) {
+                    signupPassword.setError("Password must be at least 8 characters long and contain a combination of uppercase letters, lowercase letters, numbers, and special characters.");
                 } else {
                     auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -62,13 +64,17 @@ public class createaccount extends AppCompatActivity {
                 }
             }
         });
-
-
     }
+
 
     public void login_back(View view) {
         Intent login_back_create = new Intent(this, loginregister.class);
         startActivity(login_back_create);
         finish();
+    }
+
+    private boolean isPasswordStrong(String password) {
+        String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+        return password.matches(PASSWORD_PATTERN);
     }
 }

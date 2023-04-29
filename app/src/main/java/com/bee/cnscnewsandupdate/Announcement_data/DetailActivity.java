@@ -1,4 +1,4 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.Announcement_data;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bee.cnscnewsandupdate.R;
 import com.bumptech.glide.Glide;
 
 public class DetailActivity extends AppCompatActivity {

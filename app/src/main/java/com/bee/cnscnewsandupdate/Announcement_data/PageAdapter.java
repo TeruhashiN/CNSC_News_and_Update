@@ -1,4 +1,4 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.Announcement_data;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

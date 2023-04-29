@@ -1,8 +1,5 @@
 package com.bee.cnscnewsandupdate.users_ui;
 
-import static com.bee.cnscnewsandupdate.R.id.recyclerView;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,17 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bee.cnscnewsandupdate.DataClass;
-import com.bee.cnscnewsandupdate.MyAdapter;
+import com.bee.cnscnewsandupdate.Announcement_data.DataClass;
+import com.bee.cnscnewsandupdate.Announcement_data.MyAdapter;
 import com.bee.cnscnewsandupdate.R;
-import com.bee.cnscnewsandupdate.users_ui.MainActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.List;
 import java.util.ArrayList;
 

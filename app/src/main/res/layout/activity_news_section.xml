@@ -23,23 +23,6 @@
         app:subtitleTextColor="@color/white" />
 
 
-<!--    <androidx.appcompat.widget.SearchView-->
-<!--        android:id="@+id/search"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/rectangle_searchbar"-->
-<!--        android:focusable="false"-->
-<!--        app:closeIcon="@drawable/clear_bar"-->
-<!--        app:iconifiedByDefault="false"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:queryHint="Search..."-->
-<!--        app:searchHintIcon="@null"-->
-<!--        app:searchIcon="@drawable/search_bar" />-->
-
-
-    <!--    for width 375dp-->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"

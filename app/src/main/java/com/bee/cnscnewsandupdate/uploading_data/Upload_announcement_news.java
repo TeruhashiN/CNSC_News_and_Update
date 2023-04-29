@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.bee.cnscnewsandupdate.DataClass;
+import com.bee.cnscnewsandupdate.Announcement_data.DataClass;
 import com.bee.cnscnewsandupdate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -50,6 +50,7 @@ public class Upload_announcement_news extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_announcement_news);
+
 
         uploadImage = findViewById(R.id.uploadImage);
         uploadTitle = findViewById(R.id.uploadTitle);

@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.bee.cnscnewsandupdate.PageAdapter;
+import com.bee.cnscnewsandupdate.Announcement_data.PageAdapter;
 import com.bee.cnscnewsandupdate.R;
 import com.bee.cnscnewsandupdate.uploading_data.Upload_announcement_news;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
