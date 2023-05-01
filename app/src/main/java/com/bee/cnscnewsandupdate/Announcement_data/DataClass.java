@@ -7,6 +7,16 @@ public class DataClass {
     private String dataDate;
     private String dataImage;
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    private String key;
+
     public String getDataTitle() {
         return dataTitle;
     }

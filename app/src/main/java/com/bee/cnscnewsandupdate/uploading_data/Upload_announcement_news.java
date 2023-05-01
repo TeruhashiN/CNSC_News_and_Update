@@ -34,6 +34,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 
 public class Upload_announcement_news extends AppCompatActivity {
@@ -58,7 +59,7 @@ public class Upload_announcement_news extends AppCompatActivity {
         uploadDate = findViewById(R.id.uploadDate);
         saveButton = findViewById(R.id.saveButton);
 
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Manila"));
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
