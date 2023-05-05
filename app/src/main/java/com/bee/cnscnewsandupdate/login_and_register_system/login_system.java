@@ -5,6 +5,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bee.cnscnewsandupdate.users_ui.MainActivity;
+import com.bee.cnscnewsandupdate.users_ui.SettingsFragment;
+
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +24,6 @@ import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.R;
 import com.bee.cnscnewsandupdate.login_and_register.createaccount;
-import com.bee.cnscnewsandupdate.users_ui.MainActivity;
 import com.bee.cnscnewsandupdate.users_ui.SettingsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

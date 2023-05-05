@@ -43,6 +43,12 @@
         <activity
             android:name=".users_ui.MainActivity"
             android:exported="false" />
+
+
+        <activity android:name=".users_ui.SettingsFragment"
+            android:exported="false"/>
+
+
         <activity
             android:name=".login_and_register_system.login_system"
             android:exported="true">

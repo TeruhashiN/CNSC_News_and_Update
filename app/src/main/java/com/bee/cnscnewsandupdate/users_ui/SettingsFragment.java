@@ -70,6 +70,7 @@ public class SettingsFragment extends Fragment {
         textViewFullName = view.findViewById(R.id.textView_show_full_name);
         textViewEmail = view.findViewById(R.id.textView_show_email);
         textViewDoB = view.findViewById(R.id.textView_show_dob);
+        textViewGender = view.findViewById(R.id.textView_show_gender);
         textViewMobile = view.findViewById(R.id.textView_show_mobile);
         progressBar = view.findViewById(R.id.progressBar);
 
