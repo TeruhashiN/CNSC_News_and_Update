@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,13 +16,19 @@
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
         <activity
+            android:name=".login_and_register_system.activity_register"
+            android:exported="false" />
+        <activity
+            android:name=".login_and_register.loginregister"
+            android:exported="false" />
+        <activity
             android:name=".Announcement_data.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".uploading_data.upload_breakthrough_news"
+            android:name=".users_ui.uploading_data.upload_breakthrough_news"
             android:exported="false" />
         <activity
-            android:name=".uploading_data.Upload_announcement_news"
+            android:name=".users_ui.uploading_data.Upload_announcement_news"
             android:exported="false" />
         <activity
             android:name=".Administrator.admin_NewsSection"
@@ -39,7 +44,7 @@
             android:name=".users_ui.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".login_and_register.loginregister"
+            android:name=".login_and_register_system.login_system"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

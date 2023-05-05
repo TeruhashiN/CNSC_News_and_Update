@@ -12,7 +12,7 @@ import android.view.View;
 
 import com.bee.cnscnewsandupdate.Announcement_data.PageAdapter;
 import com.bee.cnscnewsandupdate.R;
-import com.bee.cnscnewsandupdate.uploading_data.Upload_announcement_news;
+import com.bee.cnscnewsandupdate.users_ui.uploading_data.Upload_announcement_news;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;

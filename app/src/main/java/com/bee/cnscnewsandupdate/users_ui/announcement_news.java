@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -61,11 +62,6 @@ public class announcement_news extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        searchView = view.findViewById(R.id.search);
-        if (searchView != null) {
-            searchView.clearFocus();
-        }
 
 
         recyclerView = view.findViewById(R.id.recyclerView);

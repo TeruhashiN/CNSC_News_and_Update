@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,29 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        // gonna use this later
+
+//        // Check if user is an admin
+//        String userId = "00oGDrHUDjNV8FptXWQ4SwEA8qX2"; // Replace with actual user ID
+//        boolean isAdmin = userId.equals("00oGDrHUDjNV8FptXWQ4SwEA8qX2");
+//
+//        // Get reference to the RelativeLayout
+//        RelativeLayout relativeLayout = findViewById(R.id.relativeLayout);
+//
+//
+//        if (isAdmin) {
+//            // Show the RelativeLayout if user is not an admin
+//            relativeLayout.setVisibility(View.VISIBLE);
+//            Log.d("DetailActivity", "RelativeLayout object retrieved successfully");
+//
+//        } else {
+//            // Hide the RelativeLayout if user is an admin
+//            relativeLayout.setVisibility(View.GONE);
+//            Log.d("DetailActivity", "RelativeLayout object retrieved successfully");
+//
+//        }
+
 
         detailDesc = findViewById(R.id.detailDesc);
         detailTitle = findViewById(R.id.detailTitle);
