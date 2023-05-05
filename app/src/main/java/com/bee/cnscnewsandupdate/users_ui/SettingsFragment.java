@@ -1,10 +1,13 @@
 package com.bee.cnscnewsandupdate.users_ui;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.R;
 import com.bee.cnscnewsandupdate.login_and_register_system.ReadWriteUserDetails;
+import com.bee.cnscnewsandupdate.login_and_register_system.login_system;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -80,9 +84,36 @@ public class SettingsFragment extends Fragment {
         if (firebaseUser == null){
             Toast.makeText(requireContext(), "Something went wrong! User's details are not available at the moment", Toast.LENGTH_LONG).show();
         } else {
+            checkIfEmailVerified(firebaseUser);
             progressBar.setVisibility(View.VISIBLE);
             showUserProfile(firebaseUser);
         }
+    }
+
+    private void checkIfEmailVerified(FirebaseUser firebaseUser) {
+        if (!firebaseUser.isEmailVerified()){
+            showAlertDialog();
+        }
+
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Email Not Verified");
+        builder.setMessage("Please kindly verify your email. You can not login without email verification next time.");
+
+        builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void showUserProfile(FirebaseUser firebaseUser) {

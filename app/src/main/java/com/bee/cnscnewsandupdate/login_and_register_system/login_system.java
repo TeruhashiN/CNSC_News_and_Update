@@ -23,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.R;
-import com.bee.cnscnewsandupdate.login_and_register.createaccount;
 import com.bee.cnscnewsandupdate.users_ui.SettingsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
