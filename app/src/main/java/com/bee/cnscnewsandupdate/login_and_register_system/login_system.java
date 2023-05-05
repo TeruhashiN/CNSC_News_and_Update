@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.R;
 import com.bee.cnscnewsandupdate.login_and_register.createaccount;
+import com.bee.cnscnewsandupdate.users_ui.MainActivity;
 import com.bee.cnscnewsandupdate.users_ui.SettingsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -73,7 +74,7 @@ public class login_system extends AppCompatActivity {
                     Toast.makeText(login_system.this, "Please re-enter your email", Toast.LENGTH_SHORT).show();
                     editTextLoginEmail.setError("Valid email is requred");
                     editTextLoginEmail.requestFocus();
-                    
+
                 } else if (TextUtils.isEmpty(textPwd)) {
                     Toast.makeText(login_system.this, "Please enter your password", Toast.LENGTH_SHORT).show();
                     editTextLoginPwd.setError("Password is requred");
@@ -105,6 +106,9 @@ public class login_system extends AppCompatActivity {
                         Toast.makeText(login_system.this, "You are logged in now", Toast.LENGTH_SHORT).show();
 
                         // Open User Profile
+                        //start the User profile activity
+                        startActivity(new Intent(login_system.this, MainActivity.class));
+                        finish();
                     } else {
                         firebaseUser.sendEmailVerification();
                         authProfile.signOut(); //Sign out user
@@ -163,7 +167,8 @@ public class login_system extends AppCompatActivity {
             Toast.makeText(this, "You are already logged in", Toast.LENGTH_SHORT).show();
 
             //start the User profile activity
-            startActivity(new Intent(login_system.this, SettingsFragment.class));
+            startActivity(new Intent(login_system.this, MainActivity.class));
+            finish();
         }
         else {
             Toast.makeText(this, "You can login now!", Toast.LENGTH_SHORT).show();

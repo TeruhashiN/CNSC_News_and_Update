@@ -222,14 +222,14 @@ public class activity_register extends AppCompatActivity {
 
                                 Toast.makeText(activity_register.this, "User registered successfully. Please verify your email", Toast.LENGTH_LONG).show();
 
-//                                // open user profile after successful registration
-//                                 Intent intent = new Intent(activity_register.this, SettingsFragment.class);
-//
-//                                 // To Prevent User from returning back to registration activity on pressing back button after registration
-//                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                                    | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                startActivity(intent);
-//                                finish(); // to close Register Activity
+                                // open user profile after successful registration
+                                 Intent intent = new Intent(activity_register.this, SettingsFragment.class);
+
+                                 // To Prevent User from returning back to registration activity on pressing back button after registration
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                finish(); // to close Register Activity
                             }else {
                                 Toast.makeText(activity_register.this, "User registered failed. Please try again.", Toast.LENGTH_LONG).show();
                             }
