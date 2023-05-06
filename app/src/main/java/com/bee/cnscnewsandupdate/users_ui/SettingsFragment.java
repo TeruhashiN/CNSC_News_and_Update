@@ -88,6 +88,17 @@ public class SettingsFragment extends Fragment {
         textViewMobile = view.findViewById(R.id.textView_show_mobile);
         progressBar = view.findViewById(R.id.progressBar);
 
+        //image to open up uploadprofilepic
+        imageView = view.findViewById(R.id.imageView_profile_dp);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), UploadProfilePicActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
         signout_button = view.findViewById(R.id.signout_button);
         signout_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +161,7 @@ public class SettingsFragment extends Fragment {
                     gender = readUserDetails.gender;
                     mobile = readUserDetails.mobile;
 
-                    textViewWelcome.setText("Welcome " + fullName + "!");
+                    textViewWelcome.setText(fullName);
                     textViewFullName.setText(fullName);
                     textViewEmail.setText(email);
                     textViewDoB.setText(doB);

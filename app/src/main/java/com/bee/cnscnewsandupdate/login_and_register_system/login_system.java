@@ -6,7 +6,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bee.cnscnewsandupdate.users_ui.MainActivity;
-import com.bee.cnscnewsandupdate.users_ui.SettingsFragment;
 
 
 import android.content.DialogInterface;
@@ -23,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.R;
-import com.bee.cnscnewsandupdate.users_ui.SettingsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -35,6 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class login_system extends AppCompatActivity {
 
     private EditText editTextLoginEmail, editTextLoginPwd;
+    private TextView ForgotPassword;
     private ProgressBar progressBar;
     private FirebaseAuth authProfile;
     private static final String TAG = "login_system";
@@ -58,6 +57,19 @@ public class login_system extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         authProfile = FirebaseAuth.getInstance();
+
+
+        //reset password
+        TextView ForgotPassword = findViewById(R.id.forgot_password);
+        ForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(login_system.this, "You can reset your password now!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(login_system.this, ForgotPasswordActivity.class));
+            }
+        });
+
+
 
         //Login user
         Button buttonLogin = findViewById(R.id.accountlogin_button);
