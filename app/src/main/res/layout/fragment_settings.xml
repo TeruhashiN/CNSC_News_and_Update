@@ -17,7 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="#5CC09F">
+            android:background="#E48FCF">
 
             <ImageView
                 android:id="@+id/imageView_profile_dp"
@@ -27,17 +27,17 @@
                 android:background="@mipmap/account_profile" />
 
             <TextView
+                android:id="@+id/textView_show_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_show_welcome"
                 android:layout_below="@id/imageView_profile_dp"
-                android:hint="Loading..."
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
+                android:hint="Loading..."
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </RelativeLayout>
-        
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -177,22 +177,26 @@
                 android:elevation="10dp"
                 android:textAlignment="center"
                 android:visibility="gone"/>
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:layout_margin="15dp"
+            android:background="@color/white">
 
-
-
+            <Button
+                android:id="@+id/signout_button"
+                android:onClick="signout_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#EF8F8F"
+                android:text="Logout"
+                android:textColor="#3E3535" />
 
         </RelativeLayout>
 
-
-
-
     </LinearLayout>
-        
-
-
-
-
-
 
 </ScrollView>

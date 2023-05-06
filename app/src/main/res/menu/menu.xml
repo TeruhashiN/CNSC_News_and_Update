@@ -14,7 +14,7 @@
         android:icon="@drawable/news_foreground"
         android:id="@+id/newspage"/>
 
-    <item android:title="Settings"
-        android:icon="@drawable/setting_foreground"
+    <item android:title="Profile"
+        android:icon="@drawable/baseline_person_24"
         android:id="@+id/settingspage"/>
 </menu>
