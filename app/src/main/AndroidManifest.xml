@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
         <activity
+            android:name=".users_ui.UpdateProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".users_ui.UploadProfilePicActivity"
             android:exported="false" />
         <activity

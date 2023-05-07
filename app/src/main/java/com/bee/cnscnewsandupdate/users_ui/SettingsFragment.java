@@ -41,7 +41,7 @@ import com.squareup.picasso.Picasso;
 public class SettingsFragment extends Fragment {
 
     private TextView textViewWelcome, textViewFullName, textViewEmail, textViewDoB, textViewGender, textViewMobile;
-    private Button signout_button;
+    private Button signout_button, updateprofile;
     private ProgressBar progressBar;
     private String fullName, email, doB, gender, mobile;
     private ImageView imageView;
@@ -100,6 +100,17 @@ public class SettingsFragment extends Fragment {
             }
 
         });
+
+        updateprofile = view.findViewById(R.id.updateprofilebutton);
+        updateprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), UpdateProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         signout_button = view.findViewById(R.id.signout_button);
         signout_button.setOnClickListener(new View.OnClickListener() {
