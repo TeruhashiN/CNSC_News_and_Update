@@ -16,16 +16,13 @@
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
         <activity
-            android:name=".UploadProfilePicActivity"
+            android:name=".users_ui.UploadProfilePicActivity"
             android:exported="false" />
         <activity
             android:name=".login_and_register_system.ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".login_and_register_system.activity_register"
-            android:exported="false" />
-        <activity
-            android:name=".login_and_register.loginregister"
             android:exported="false" />
         <activity
             android:name=".Announcement_data.DetailActivity"
@@ -43,9 +40,6 @@
             android:name=".users_ui.NewsSection"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".login_and_register.createaccount"
-            android:exported="false" />
         <activity
             android:name=".users_ui.MainActivity"
             android:exported="false" />

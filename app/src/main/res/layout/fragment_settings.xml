@@ -187,8 +187,19 @@
             android:background="@color/white">
 
             <Button
+                android:id="@+id/updateprofilebutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1E819A"
+                android:text="Update Profile"
+                android:textColor="#3E3535" />
+
+
+            <Button
+                android:layout_marginTop="10dp"
                 android:id="@+id/signout_button"
                 android:onClick="signout_buttons"
+                android:layout_below="@id/updateprofilebutton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#EF8F8F"

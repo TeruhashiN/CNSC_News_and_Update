@@ -2,6 +2,7 @@ package com.bee.cnscnewsandupdate.users_ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 public class SettingsFragment extends Fragment {
@@ -119,6 +121,8 @@ public class SettingsFragment extends Fragment {
         }
     }
 
+
+
     private void checkIfEmailVerified(FirebaseUser firebaseUser) {
         if (!firebaseUser.isEmailVerified()) {
             showAlertDialog();
@@ -167,6 +171,14 @@ public class SettingsFragment extends Fragment {
                     textViewDoB.setText(doB);
                     textViewGender.setText(gender);
                     textViewMobile.setText(mobile);
+
+                    // Set User DP
+                    Uri uri = firebaseUser.getPhotoUrl();
+
+                    //ImageView setImageUrl should not be used with regular URI.
+                    Picasso.with(getActivity()).load(uri).into(imageView);
+                } else {
+                    Toast.makeText(requireContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
                 progressBar.setVisibility(View.GONE);
 
