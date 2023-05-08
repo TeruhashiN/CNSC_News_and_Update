@@ -80,16 +80,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
             }
         });
 
-        // update email
-//        Button buttonUpdateEmail = findViewById(R.id.button_profile_update_email);
-//        buttonUpdateEmail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(UpdateProfileActivity.this, UpdateEmailActivity  .class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        Button buttonUpdateEmail = findViewById(R.id.button_profile_update_email);
+        buttonUpdateEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UpdateProfileActivity.this, UpdateEmailActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         editTextUpdateDoB.setOnClickListener(new View.OnClickListener() {
             @Override
