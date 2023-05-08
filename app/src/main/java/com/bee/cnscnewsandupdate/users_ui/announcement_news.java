@@ -78,7 +78,7 @@ public class announcement_news extends Fragment {
         adapter = new MyAdapter(getContext(), dataList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true));
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Announcement News");
         dialog.show();

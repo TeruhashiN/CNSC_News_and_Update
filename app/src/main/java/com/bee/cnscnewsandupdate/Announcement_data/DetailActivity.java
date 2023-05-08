@@ -13,16 +13,24 @@ import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.Administrator.admin_NewsSection;
 import com.bee.cnscnewsandupdate.R;
+import com.bee.cnscnewsandupdate.login_and_register_system.login_system;
 import com.bee.cnscnewsandupdate.users_ui.MainActivity;
 import com.bumptech.glide.Glide;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+
 public class DetailActivity extends AppCompatActivity {
+
+    private static final String ADMIN_UID = "i1R5VSXkGcS7OkV4VCJlUDPViPz1"; // admin code
+
+    private FirebaseAuth authProfile;
 
     TextView detailDesc, detailTitle, detailDate;
     ImageView detailImage;
@@ -35,27 +43,23 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        // gonna use this later
-
-//        // Check if user is an admin
-//        String userId = "00oGDrHUDjNV8FptXWQ4SwEA8qX2"; // Replace with actual user ID
-//        boolean isAdmin = userId.equals("00oGDrHUDjNV8FptXWQ4SwEA8qX2");
+//        authProfile = FirebaseAuth.getInstance(); // initialize authProfile
+//        FirebaseUser firebaseUser = authProfile.getCurrentUser();
 //
-//        // Get reference to the RelativeLayout
-//        RelativeLayout relativeLayout = findViewById(R.id.relativeLayout);
+//        FloatingActionButton floatingActionButton = findViewById(R.id.floatingplus);
 //
-//
-//        if (isAdmin) {
-//            // Show the RelativeLayout if user is not an admin
-//            relativeLayout.setVisibility(View.VISIBLE);
-//            Log.d("DetailActivity", "RelativeLayout object retrieved successfully");
+//        if (firebaseUser.getUid().equals(ADMIN_UID)) {
+//            // Show the FloatingActionButton if user is an admin
+//            floatingActionButton.setVisibility(View.VISIBLE);
+//            Log.d("DetailActivity", "FloatingActionButton object retrieved successfully");
 //
 //        } else {
-//            // Hide the RelativeLayout if user is an admin
-//            relativeLayout.setVisibility(View.GONE);
-//            Log.d("DetailActivity", "RelativeLayout object retrieved successfully");
+//            // Hide the FloatingActionButton if user is not an admin
+//            floatingActionButton.setVisibility(View.GONE);
+//            Log.d("DetailActivity", "FloatingActionButton object retrieved successfully");
 //
 //        }
+
 
 
         detailDesc = findViewById(R.id.detailDesc);
