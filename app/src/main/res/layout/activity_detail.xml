@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,93 +8,86 @@
     android:orientation="vertical"
     tools:context=".Announcement_data.DetailActivity">
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/NewsDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/detailTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="12dp"
+            android:text="Title"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/detailTitle"
-                android:layout_width="399dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="12dp"
-                android:paddingLeft="40dp"
-                android:text="Title"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/detailDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="20dp"
+            android:layout_below="@id/detailTitle"
+            android:text="Date"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/detailDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="20dp"
-                android:text="Date"
-                android:textColor="@color/black"
+        <ImageView
+            android:id="@+id/detailImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_below="@id/detailDate"
+            android:padding="8dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/uploading_image" />
 
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/detailDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/detailImage"
+            android:padding="20dp"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
-            <ImageView
-                android:id="@+id/detailImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="8dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/uploading_image" />
+        <com.github.clans.fab.FloatingActionMenu
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            app:menu_fab_size="normal"
+            android:layout_below="@id/detailDesc"
+            android:layout_marginBottom="20dp"
+            app:menu_colorPressed="@color/purple_200"
+            app:menu_colorNormal="@color/purple_200"
+            app:menu_icon="@drawable/baseline_format_list_bulleted_24"
+            app:menu_openDirection="up"
+            app:menu_showShadow="true">
 
-            <TextView
-                android:id="@+id/detailDesc"
-                android:layout_width="375dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:padding="20dp"
-                android:text="Description"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <RelativeLayout
-                android:id="@+id/relativeLayout"
+            <com.github.clans.fab.FloatingActionButton
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/deleteButton"
+                android:src="@drawable/baseline_delete_24"
+                app:fab_showShadow="true"
+                app:fab_colorNormal="@color/red"
+                app:fab_size="mini"/>
 
-                <com.github.clans.fab.FloatingActionMenu
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    app:menu_fab_size="normal"
-                    android:layout_marginBottom="20dp"
-                    app:menu_colorPressed="@color/purple_200"
-                    app:menu_colorNormal="@color/purple_200"
-                    app:menu_icon="@drawable/baseline_format_list_bulleted_24"
-                    app:menu_openDirection="up"
-                    app:menu_showShadow="true">
-
-                    <com.github.clans.fab.FloatingActionButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/deleteButton"
-                        android:src="@drawable/baseline_delete_24"
-                        app:fab_showShadow="true"
-                        app:fab_colorNormal="@color/red"
-                        app:fab_size="mini"/>
-
-                </com.github.clans.fab.FloatingActionMenu>
-
-            </RelativeLayout>
-
-        </LinearLayout>
+        </com.github.clans.fab.FloatingActionMenu>
 
 
-    </ScrollView>
 
-</LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

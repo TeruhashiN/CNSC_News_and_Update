@@ -1,4 +1,4 @@
-package com.bee.cnscnewsandupdate.users_ui.uploading_data;
+package com.bee.cnscnewsandupdate.uploading_data;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;

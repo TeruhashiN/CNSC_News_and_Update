@@ -34,10 +34,10 @@
             android:name=".Announcement_data.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".users_ui.uploading_data.upload_breakthrough_news"
+            android:name=".uploading_data.upload_breakthrough_news"
             android:exported="false" />
         <activity
-            android:name=".users_ui.uploading_data.Upload_announcement_news"
+            android:name=".uploading_data.Upload_announcement_news"
             android:exported="false" />
         <activity
             android:name=".Administrator.admin_NewsSection"

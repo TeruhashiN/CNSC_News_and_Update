@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bee.cnscnewsandupdate.Administrator.admin_NewsSection;
 import com.bee.cnscnewsandupdate.users_ui.MainActivity;
 
 
@@ -37,6 +38,8 @@ public class login_system extends AppCompatActivity {
     private ProgressBar progressBar;
     private FirebaseAuth authProfile;
     private static final String TAG = "login_system";
+
+    private static final String ADMIN_UID = "i1R5VSXkGcS7OkV4VCJlUDPViPz1"; // admin code
 
     TextView create_account_text;
 
@@ -117,12 +120,20 @@ public class login_system extends AppCompatActivity {
 
                     //Check if email is verified or not
                     if (firebaseUser.isEmailVerified()) {
-                        Toast.makeText(login_system.this, "You are logged in now", Toast.LENGTH_SHORT).show();
+                        if (firebaseUser.getUid().equals(ADMIN_UID)) {
+                            Toast.makeText(login_system.this, "You are logged in as an admin", Toast.LENGTH_SHORT).show();
 
-                        // Open User Profile
-                        //start the User profile activity
-                        startActivity(new Intent(login_system.this, MainActivity.class));
-                        finish();
+                            // Open Admin Activity
+                            startActivity(new Intent(login_system.this, admin_NewsSection.class));
+                            finish();
+                        } else {
+                            Toast.makeText(login_system.this, "You are logged in now", Toast.LENGTH_SHORT).show();
+
+                            // Open User Profile
+                            //start the User profile activity
+                            startActivity(new Intent(login_system.this, MainActivity.class));
+                            finish();
+                        }
                     } else {
                         firebaseUser.sendEmailVerification();
                         authProfile.signOut(); //Sign out user
@@ -147,6 +158,7 @@ public class login_system extends AppCompatActivity {
             }
         });
     }
+
 
     private void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(login_system.this);
