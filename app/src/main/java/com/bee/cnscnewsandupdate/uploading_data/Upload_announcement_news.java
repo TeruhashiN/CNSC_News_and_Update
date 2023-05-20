@@ -32,6 +32,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -205,6 +206,8 @@ public class Upload_announcement_news extends AppCompatActivity {
         String date = uploadDate.getText().toString();
 
         DataClass dataClass = new DataClass(title, desc, date, imageURL);
+
+        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
         FirebaseDatabase.getInstance().getReference("Announcement News").child(String.valueOf(title))
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
