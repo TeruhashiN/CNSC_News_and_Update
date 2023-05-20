@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
@@ -75,13 +74,6 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        // Set the title of the action bar
-        ActionBar actionBar = ((MainActivity) requireActivity()).getMyActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle("Settings");
-        }
-
         textViewWelcome = view.findViewById(R.id.textView_show_welcome);
         textViewFullName = view.findViewById(R.id.textView_show_full_name);
         textViewEmail = view.findViewById(R.id.textView_show_email);
@@ -110,8 +102,6 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-
-
         signout_button = view.findViewById(R.id.signout_button);
         signout_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,13 +122,10 @@ public class SettingsFragment extends Fragment {
         }
     }
 
-
-
     private void checkIfEmailVerified(FirebaseUser firebaseUser) {
         if (!firebaseUser.isEmailVerified()) {
             showAlertDialog();
         }
-
     }
 
     private void showAlertDialog() {
@@ -163,7 +150,7 @@ public class SettingsFragment extends Fragment {
     private void showUserProfile(FirebaseUser firebaseUser) {
         String userID = firebaseUser.getUid();
 
-        //Extracting User Reference from Database for registered users
+        // Extracting User Reference from Database for registered users
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
         referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -186,20 +173,18 @@ public class SettingsFragment extends Fragment {
                     // Set User DP
                     Uri uri = firebaseUser.getPhotoUrl();
 
-                    //ImageView setImageUrl should not be used with regular URI.
+                    // ImageView setImageUrl should not be used with regular URI.
                     Picasso.with(getActivity()).load(uri).into(imageView);
                 } else {
                     Toast.makeText(requireContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
                 progressBar.setVisibility(View.GONE);
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(requireContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.GONE);
-
             }
         });
     }
@@ -211,7 +196,4 @@ public class SettingsFragment extends Fragment {
         startActivity(intent);
         requireActivity().finish(); // Close the current activity
     }
-
-
-
 }

@@ -17,6 +17,7 @@ import com.bee.cnscnewsandupdate.login_and_register_system.login_system;
 import com.bee.cnscnewsandupdate.users_ui.MainActivity;
 import com.bumptech.glide.Glide;
 import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,22 +44,23 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-//        authProfile = FirebaseAuth.getInstance(); // initialize authProfile
-//        FirebaseUser firebaseUser = authProfile.getCurrentUser();
-//
-//        FloatingActionButton floatingActionButton = findViewById(R.id.floatingplus);
-//
-//        if (firebaseUser.getUid().equals(ADMIN_UID)) {
-//            // Show the FloatingActionButton if user is an admin
-//            floatingActionButton.setVisibility(View.VISIBLE);
-//            Log.d("DetailActivity", "FloatingActionButton object retrieved successfully");
-//
-//        } else {
-//            // Hide the FloatingActionButton if user is not an admin
-//            floatingActionButton.setVisibility(View.GONE);
-//            Log.d("DetailActivity", "FloatingActionButton object retrieved successfully");
-//
-//        }
+        authProfile = FirebaseAuth.getInstance(); // initialize authProfile
+        FirebaseUser firebaseUser = authProfile.getCurrentUser();
+
+
+        FloatingActionMenu floatingActionMenu = findViewById(R.id.floatingplus);
+
+        if (firebaseUser.getUid().equals(ADMIN_UID)) {
+            // Show the FloatingActionButton if user is an admin
+            floatingActionMenu.setVisibility(View.VISIBLE);
+            Log.d("DetailActivity", "FloatingActionButton object retrieved successfully");
+
+        } else {
+            // Hide the FloatingActionButton if user is not an admin
+            floatingActionMenu.setVisibility(View.GONE);
+            Log.d("DetailActivity", "FloatingActionButton object retrieved successfully");
+
+        }
 
 
 

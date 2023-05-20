@@ -14,7 +14,9 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class NewsSection extends AppCompatActivity {
 
     private String[] tabs = {"Today's News", "Announcement", "Department News", "Breakthrough"};
-
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager;
+    private PageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,23 +26,15 @@ public class NewsSection extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-
-
-
-
-
-
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout = findViewById(R.id.tab_layout);
 
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label1));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label2));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label3));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label4));
 
-        final ViewPager2 viewPager = findViewById(R.id.pager);
-        final PageAdapter adapter = new PageAdapter(getSupportFragmentManager(), getLifecycle());
+        viewPager = findViewById(R.id.pager);
+        adapter = new PageAdapter(getSupportFragmentManager(), getLifecycle());
         viewPager.setAdapter(adapter);
 
         adapter.addFragment(new todays_news());
@@ -49,12 +43,38 @@ public class NewsSection extends AppCompatActivity {
         adapter.addFragment(new breakthrough_news());
 
         viewPager.setAdapter(adapter);
+
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText(tabs[position])).attach();
 
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                if (position == 0) {
+                    // Today's News tab selected
+                    // Handle the logic or UI changes for the Today's News tab
+                } else if (position == 1) {
+                    // Announcement tab selected
+                    // Handle the logic or UI changes for the Announcement tab
+                } else if (position == 2) {
+                    // Department News tab selected
+                    // Handle the logic or UI changes for the Department News tab
+                } else if (position == 3) {
+                    // Breakthrough tab selected
+                    // Handle the logic or UI changes for the Breakthrough tab
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                // Do nothing
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                // Do nothing
+            }
+        });
     }
-
-
-
-
 }

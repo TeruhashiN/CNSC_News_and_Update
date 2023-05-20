@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.settingspage:
                     replaceFragment(new SettingsFragment());
-
                     break;
 
 
