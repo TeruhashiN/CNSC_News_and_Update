@@ -110,41 +110,31 @@ public class login_system extends AppCompatActivity {
     }
 
     private void loginUser(String email, String pwd) {
-        authProfile.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(login_system.this,new OnCompleteListener<AuthResult>() {
+        authProfile.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(login_system.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
-                    //Get instance of the current User
+                    // Get instance of the current User
                     FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
-                    //Check if email is verified or not
+                    // Check if email is verified or not
                     if (firebaseUser.isEmailVerified()) {
-                        if (firebaseUser.getUid().equals(ADMIN_UID)) {
-                            Toast.makeText(login_system.this, "You are logged in as an admin", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(login_system.this, "You are logged in now", Toast.LENGTH_SHORT).show();
 
-                            // Open Admin Activity
-                            startActivity(new Intent(login_system.this, admin_NewsSection.class));
-                            finish();
-                        } else {
-                            Toast.makeText(login_system.this, "You are logged in now", Toast.LENGTH_SHORT).show();
-
-                            // Open User Profile
-                            //start the User profile activity
-                            startActivity(new Intent(login_system.this, MainActivity.class));
-                            finish();
-                        }
+                        // Open User Profile
+                        // Start the User profile activity
+                        startActivity(new Intent(login_system.this, MainActivity.class));
+                        finish();
                     } else {
                         firebaseUser.sendEmailVerification();
-                        authProfile.signOut(); //Sign out user
+                        authProfile.signOut(); // Sign out user
                         showAlertDialog();
                     }
-
                 } else {
                     try {
                         throw task.getException();
                     } catch (FirebaseAuthInvalidUserException e) {
-                        editTextLoginEmail.setError("User does not exists or is no longer valid. Please register again.");
+                        editTextLoginEmail.setError("User does not exist or is no longer valid. Please register again.");
                         editTextLoginEmail.requestFocus();
                     } catch (FirebaseAuthInvalidCredentialsException e) {
                         editTextLoginEmail.setError("Invalid credentials. Kindly, check and re-enter.");
@@ -158,6 +148,7 @@ public class login_system extends AppCompatActivity {
             }
         });
     }
+
 
 
     private void showAlertDialog() {
