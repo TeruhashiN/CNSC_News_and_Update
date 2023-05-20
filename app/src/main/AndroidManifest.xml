@@ -46,9 +46,6 @@
             android:name=".uploading_data.Upload_announcement_news"
             android:exported="false" />
         <activity
-            android:name=".Administrator.admin_NewsSection"
-            android:exported="false" />
-        <activity
             android:name=".users_ui.NewsSection"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />

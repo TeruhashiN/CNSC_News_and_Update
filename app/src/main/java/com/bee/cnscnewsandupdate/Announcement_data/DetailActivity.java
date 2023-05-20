@@ -7,14 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bee.cnscnewsandupdate.Administrator.admin_NewsSection;
 import com.bee.cnscnewsandupdate.R;
-import com.bee.cnscnewsandupdate.login_and_register_system.login_system;
-import com.bee.cnscnewsandupdate.users_ui.MainActivity;
+import com.bee.cnscnewsandupdate.users_ui.NewsSection;
 import com.bumptech.glide.Glide;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -91,7 +88,7 @@ public class DetailActivity extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         reference.child(key).removeValue();
                         Toast.makeText(DetailActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), admin_NewsSection.class));
+                        startActivity(new Intent(getApplicationContext(), NewsSection.class));
                     }
                 });
             }

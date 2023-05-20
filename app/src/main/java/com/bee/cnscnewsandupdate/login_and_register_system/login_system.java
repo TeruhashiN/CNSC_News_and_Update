@@ -5,7 +5,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bee.cnscnewsandupdate.Administrator.admin_NewsSection;
 import com.bee.cnscnewsandupdate.users_ui.MainActivity;
 
 
