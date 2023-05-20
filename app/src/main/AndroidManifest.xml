@@ -16,7 +16,7 @@
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
         <activity
-            android:name=".UpdateActivity"
+            android:name=".Announcement_data.UpdateActivity"
             android:exported="false" />
         <activity
             android:name=".bottom_navigation"
