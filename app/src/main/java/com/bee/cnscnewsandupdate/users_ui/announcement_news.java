@@ -68,6 +68,14 @@ public class announcement_news extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 
+        searchView = view.findViewById(R.id.search);
+        if (searchView != null) {
+            searchView.clearFocus();
+        }
+
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
@@ -89,6 +97,7 @@ public class announcement_news extends Fragment {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     DataClass dataClass = itemSnapshot.getValue(DataClass.class);
+                    dataClass.setKey(itemSnapshot.getKey());
                     dataList.add(dataClass);
                 }
                 adapter.notifyDataSetChanged();
