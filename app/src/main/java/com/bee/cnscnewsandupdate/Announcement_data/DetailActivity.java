@@ -32,7 +32,7 @@ public class DetailActivity extends AppCompatActivity {
 
     TextView detailDesc, detailTitle, detailDate;
     ImageView detailImage;
-    FloatingActionButton deleteButton;
+    FloatingActionButton deleteButton, editButton;
     String key = "";
     String imageUrl = "";
 
@@ -65,6 +65,7 @@ public class DetailActivity extends AppCompatActivity {
         detailTitle = findViewById(R.id.detailTitle);
         detailImage = findViewById(R.id.detailImage);
         detailDate = findViewById(R.id.detailDate);
+        editButton = findViewById(R.id.editButton);
         deleteButton = findViewById(R.id.deleteButton);
 
         Bundle bundle = getIntent().getExtras();
@@ -91,6 +92,18 @@ public class DetailActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), NewsSection.class));
                     }
                 });
+            }
+        });
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailActivity.this, UpdateActivity.class)
+                        .putExtra("Title", detailTitle.getText().toString())
+                        .putExtra("Description", detailDesc.getText().toString())
+                        .putExtra("Date", detailDate.getText().toString())
+                        .putExtra("Image", imageUrl)
+                        .putExtra("Key", key);
+                startActivity(intent);
             }
         });
     }

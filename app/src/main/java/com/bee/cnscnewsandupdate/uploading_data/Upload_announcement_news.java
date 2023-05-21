@@ -209,7 +209,7 @@ public class Upload_announcement_news extends AppCompatActivity {
 
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
-        FirebaseDatabase.getInstance().getReference("Announcement News").child(String.valueOf(title))
+        FirebaseDatabase.getInstance().getReference("Announcement News").child(String.valueOf(currentDate))
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
