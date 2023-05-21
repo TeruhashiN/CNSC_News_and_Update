@@ -19,9 +19,6 @@
             android:name=".Announcement_data.UpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".bottom_navigation"
-            android:exported="false" />
-        <activity
             android:name=".users_ui.UpdateEmailActivity"
             android:exported="false" />
         <activity
