@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
         <activity
+            android:name=".uploading_data.upload_department_news"
+            android:exported="false" />
+        <activity
             android:name=".Announcement_data.UpdateActivity"
             android:exported="false" />
         <activity

@@ -15,6 +15,7 @@ import com.bee.cnscnewsandupdate.Announcement_data.PageAdapter;
 import com.bee.cnscnewsandupdate.R;
 import com.bee.cnscnewsandupdate.uploading_data.Upload_announcement_news;
 import com.bee.cnscnewsandupdate.uploading_data.upload_breakthrough_news;
+import com.bee.cnscnewsandupdate.uploading_data.upload_department_news;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -101,11 +102,14 @@ public class NewsSection extends AppCompatActivity {
                         }
                     });
                 } else if (position == 2) {
-                    // Department News tab selected
-                    // Handle the logic or UI changes for the Department News tab
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(NewsSection.this, upload_department_news.class);
+                            startActivity(intent);
+                        }
+                    });
                 } else if (position == 3) {
-                    // Breakthrough tab selected
-                    // Handle the logic or UI changes for the Breakthrough tab
                     fab.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {

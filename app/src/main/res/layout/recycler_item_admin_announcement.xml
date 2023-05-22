@@ -14,8 +14,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@drawable/rectangle_border"
-        android:layout_height="350dp">
+        android:layout_height="350dp"
+        android:background="@drawable/rectangle_border">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/recImage"
@@ -37,8 +37,8 @@
             android:layout_width="324dp"
             android:layout_height="23dp"
             android:text="Title"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.565"
