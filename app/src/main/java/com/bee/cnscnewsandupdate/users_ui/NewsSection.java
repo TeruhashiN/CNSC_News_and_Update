@@ -14,6 +14,7 @@ import android.view.View;
 import com.bee.cnscnewsandupdate.Announcement_data.PageAdapter;
 import com.bee.cnscnewsandupdate.R;
 import com.bee.cnscnewsandupdate.uploading_data.Upload_announcement_news;
+import com.bee.cnscnewsandupdate.uploading_data.upload_breakthrough_news;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -30,6 +31,7 @@ public class NewsSection extends AppCompatActivity {
     private PageAdapter adapter;
 
     private FirebaseAuth authProfile;
+
 
     FloatingActionButton fab;
 
@@ -91,15 +93,28 @@ public class NewsSection extends AppCompatActivity {
                 } else if (position == 1) {
                     // Announcement tab selected
                     // Handle the logic or UI changes for the Announcement tab
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(NewsSection.this, Upload_announcement_news.class);
+                            startActivity(intent);
+                        }
+                    });
                 } else if (position == 2) {
                     // Department News tab selected
                     // Handle the logic or UI changes for the Department News tab
                 } else if (position == 3) {
                     // Breakthrough tab selected
                     // Handle the logic or UI changes for the Breakthrough tab
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(NewsSection.this, upload_breakthrough_news.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
-
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
@@ -116,8 +131,8 @@ public class NewsSection extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NewsSection.this, Upload_announcement_news.class);
-                startActivity(intent);
+                // Default click listener behavior for non-Announcement tab
+                // Add your code here for the desired behavior
             }
         });
         fab.setOnTouchListener(new View.OnTouchListener() {

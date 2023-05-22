@@ -1,5 +1,4 @@
 package com.bee.cnscnewsandupdate.uploading_data;
-
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -9,13 +8,17 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.Announcement_data.DataClass;
@@ -29,7 +32,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
+
+
 public class upload_breakthrough_news extends AppCompatActivity {
+
+    int hour1, minute1;
 
     ImageView uploadImage;
     Button saveButton;
@@ -42,11 +53,20 @@ public class upload_breakthrough_news extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_breakthrough_news);
 
-        uploadImage = findViewById(R.id.uploadImage_breakthrough);
-        uploadTitle = findViewById(R.id.uploadTitle_breakthrough);
-        uploadDesc = findViewById(R.id.uploadDesc_breakthrough);
-        uploadDate = findViewById(R.id.uploadDate_breakthrough);
-        saveButton = findViewById(R.id.saveButton_breakthrough);
+
+        uploadImage = findViewById(R.id.uploadImage);
+        uploadTitle = findViewById(R.id.uploadTitle);
+        uploadDesc = findViewById(R.id.uploadDesc);
+        uploadDate = findViewById(R.id.uploadDate);
+        saveButton = findViewById(R.id.saveButton);
+
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Manila"));
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
 
         ActivityResultLauncher<Intent>activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -73,15 +93,84 @@ public class upload_breakthrough_news extends AppCompatActivity {
             }
         });
 
+        uploadDate.setOnClickListener(v -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view1, int year1, int month1, int dayOfMonth) {
+                    month1 = month1 + 1;
+                    String date = dayOfMonth + "/" + month1 + "/" + year1;
+                    uploadDate.setText(date);
+
+                    // Create a TimePickerDialog to allow the user to select a time
+                    TimePickerDialog timePickerDialog = new TimePickerDialog(upload_breakthrough_news.this, new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                            // Convert 24-hour format to 12-hour format
+                            String AM_PM;
+                            if (hourOfDay < 12) {
+                                AM_PM = "AM";
+                                if (hourOfDay == 0) {
+                                    hour1 = 12;
+                                } else {
+                                    hour1 = hourOfDay;
+                                }
+                            } else {
+                                AM_PM = "PM";
+                                if (hourOfDay == 12) {
+                                    hour1 = 12;
+                                } else {
+                                    hour1 = hourOfDay - 12;
+                                }
+                            }
+                            // Format the time
+                            String time = String.format(Locale.getDefault(), "%02d:%02d %s", hour1, minute, AM_PM);
+                            uploadDate.setText(uploadDate.getText() + " " + time);
+                        }
+                    }, hour, minute, false); // By typing a False, it will make 24 hours into AM and PM naisu desu
+                    timePickerDialog.show();
+                }
+            }, year, month, day);
+            datePickerDialog.show();
+        });
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
+                // Check if the EditText fields are empty
+                if (uploadTitle.getText().toString().isEmpty() ||
+                        uploadDesc.getText().toString().isEmpty() ||
+                        uploadDate.getText().toString().isEmpty()) {
+
+                    // Show a dialog box with an error message
+                    AlertDialog.Builder builder = new AlertDialog.Builder(upload_breakthrough_news.this);
+                    builder.setMessage("Please fill in all the fields");
+                    builder.setPositiveButton("OK", null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                } else {
+                    saveData();
+                }
             }
         });
+
+
     }
     public void saveData() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images {Breakthrough}")
+        if (uploadTitle.getText().toString().isEmpty()) {
+            uploadTitle.setError("Title is required");
+            return;
+        }
+        if (uploadDesc.getText().toString().isEmpty()) {
+            uploadDesc.setError("Description is required");
+            return;
+        }
+        if (uri == null) {
+            Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images / Breakthrough Section")
                 .child(uri.getLastPathSegment());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(upload_breakthrough_news.this);
@@ -114,11 +203,13 @@ public class upload_breakthrough_news extends AppCompatActivity {
 
         String title = uploadTitle.getText().toString();
         String desc = uploadDesc.getText().toString();
-        String lang = uploadDate.getText().toString();
+        String date = uploadDate.getText().toString();
 
-        DataClass dataClass = new DataClass(title, desc, lang, imageURL);
+        DataClass dataClass = new DataClass(title, desc, date, imageURL);
 
-        FirebaseDatabase.getInstance().getReference("breakthrough News").child(title)
+        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
+        FirebaseDatabase.getInstance().getReference("Breakthrough News").child(String.valueOf(currentDate))
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -135,5 +226,6 @@ public class upload_breakthrough_news extends AppCompatActivity {
                 });
 
     }
+
 
 }

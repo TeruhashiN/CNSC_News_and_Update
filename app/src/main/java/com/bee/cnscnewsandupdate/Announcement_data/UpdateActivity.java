@@ -52,6 +52,8 @@ public class UpdateActivity extends AppCompatActivity {
         updateDesc = findViewById(R.id.updateDesc);
         updateTitle = findViewById(R.id.updateTitle);
         updateDate = findViewById(R.id.updateDate);
+        updateImage = findViewById(R.id.updateImage); // Replace "R.id.updateImage" with the actual ID of your ImageView in the XML layout file.
+
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -82,9 +84,13 @@ public class UpdateActivity extends AppCompatActivity {
         updateImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent photoPicker = new Intent(Intent.ACTION_PICK);
-                photoPicker.setType("image/*");
-                activityResultLauncher.launch(photoPicker);
+                if (uri != null) {
+                    saveData();
+                    Intent intent = new Intent(UpdateActivity.this, NewsSection.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(UpdateActivity.this, "Please select an image", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         updateButton.setOnClickListener(new View.OnClickListener() {
