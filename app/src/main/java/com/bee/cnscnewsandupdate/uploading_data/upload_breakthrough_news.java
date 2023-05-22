@@ -22,6 +22,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.Announcement_data.DataClass;
+import com.bee.cnscnewsandupdate.FcmNotificationsSender;
 import com.bee.cnscnewsandupdate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,6 +32,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import com.google.firebase.ktx.Firebase;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -45,7 +61,7 @@ public class upload_breakthrough_news extends AppCompatActivity {
     ImageView uploadImage;
     Button saveButton;
     EditText uploadTitle, uploadDesc, uploadDate;
-    String imageURL;
+    String imageURL, NotifTitle, NotifMessage;
     Uri uri;
 
     @Override
@@ -66,6 +82,9 @@ public class upload_breakthrough_news extends AppCompatActivity {
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
         final int hour = calendar.get(Calendar.HOUR_OF_DAY);
         final int minute = calendar.get(Calendar.MINUTE);
+
+        NotifTitle = "Announcement!";
+        NotifMessage = "News has been updated! Check them out.";
 
 
         ActivityResultLauncher<Intent>activityResultLauncher = registerForActivityResult(
@@ -215,6 +234,10 @@ public class upload_breakthrough_news extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(upload_breakthrough_news.this, "Saved", Toast.LENGTH_SHORT).show();
+                            // Notification
+                            FcmNotificationsSender notificationsSender = new FcmNotificationsSender("/topics/All",NotifTitle, NotifMessage, getApplicationContext(), upload_breakthrough_news.this);
+                            notificationsSender.SendNotifications();
+                            finish();
                             finish();
                         }
                     }

@@ -13,6 +13,7 @@ import com.bee.cnscnewsandupdate.R;
 import com.bee.cnscnewsandupdate.databinding.ActivityMainBinding;
 
 
+
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
 
