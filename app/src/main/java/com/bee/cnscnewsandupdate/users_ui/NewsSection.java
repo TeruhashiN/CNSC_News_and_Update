@@ -91,9 +91,20 @@ public class NewsSection extends AppCompatActivity {
                 if (position == 0) {
                     // Today's News tab selected
                     // Handle the logic or UI changes for the Today's News tab
+
+                    // Hide the FloatingActionButton
+                    floatingActionButton.setVisibility(View.GONE);
                 } else if (position == 1) {
                     // Announcement tab selected
                     // Handle the logic or UI changes for the Announcement tab
+
+                    // Show the FloatingActionButton if user is an admin
+                    if (firebaseUser.getUid().equals(ADMIN_UID)) {
+                        floatingActionButton.setVisibility(View.VISIBLE);
+                    } else {
+                        floatingActionButton.setVisibility(View.GONE);
+                    }
+
                     fab.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {

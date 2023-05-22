@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,15 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".users_ui.department_news">
 
-    <RelativeLayout
-        android:id="@+id/departmentrelative"
+    <LinearLayout
+        android:id="@+id/searchLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/rectangle_searchbar"
             android:focusable="false"
             app:closeIcon="@drawable/clear_bar"
@@ -24,17 +25,21 @@
             app:searchHintIcon="@null"
             app:searchIcon="@drawable/search_bar" />
 
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_below="@id/search"/>
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_search_off_24"
+            android:padding="16dp"
+            android:clickable="true"
+            android:focusable="true" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/departmentrelative">
+        android:layout_below="@id/searchLayout">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -43,9 +48,5 @@
             android:scrollbars="vertical" />
 
     </RelativeLayout>
-
-
-
-
 
 </RelativeLayout>

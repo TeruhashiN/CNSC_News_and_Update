@@ -14,6 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 import com.bee.cnscnewsandupdate.Announcement_data.DataClass;
 import com.bee.cnscnewsandupdate.Announcement_data.MyAdapter;
@@ -62,6 +66,22 @@ public class announcement_news extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Click listener for the ImageView
+        ImageView searchIcon = view.findViewById(R.id.searchIcon);
+        searchIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (searchView.getVisibility() == View.VISIBLE) {
+                    searchView.setVisibility(View.GONE);
+                    searchView.setQuery("", false);
+                    searchView.clearFocus();
+                } else {
+                    searchView.setVisibility(View.VISIBLE);
+                    searchView.requestFocus();
+                }
+            }
+        });
 
 
         recyclerView = view.findViewById(R.id.recyclerView);
