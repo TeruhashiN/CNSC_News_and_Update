@@ -8,6 +8,8 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -16,6 +18,7 @@ import com.bee.cnscnewsandupdate.R;
 import com.bee.cnscnewsandupdate.uploading_data.Upload_announcement_news;
 import com.bee.cnscnewsandupdate.uploading_data.upload_breakthrough_news;
 import com.bee.cnscnewsandupdate.uploading_data.upload_department_news;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -89,11 +92,15 @@ public class NewsSection extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 if (position == 0) {
-                    // Today's News tab selected
-                    // Handle the logic or UI changes for the Today's News tab
 
                     // Hide the FloatingActionButton
                     floatingActionButton.setVisibility(View.GONE);
+
+                    // Show the NEWS of bottom navigation bar
+                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+                    Menu menu = bottomNavigationView.getMenu();
+                    MenuItem newsItem = menu.findItem(R.id.newspage);
+                    newsItem.setChecked(true);
                 } else if (position == 1) {
                     // Announcement tab selected
                     // Handle the logic or UI changes for the Announcement tab
@@ -105,6 +112,7 @@ public class NewsSection extends AppCompatActivity {
                         floatingActionButton.setVisibility(View.GONE);
                     }
 
+
                     fab.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -112,6 +120,12 @@ public class NewsSection extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+                    // Show the NEWS of bottom navigation bar
+                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+                    Menu menu = bottomNavigationView.getMenu();
+                    MenuItem newsItem = menu.findItem(R.id.newspage);
+                    newsItem.setChecked(true);
+
                 } else if (position == 2) {
                     fab.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -120,6 +134,13 @@ public class NewsSection extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+
+                    // Show the NEWS of bottom navigation bar
+                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+                    Menu menu = bottomNavigationView.getMenu();
+                    MenuItem newsItem = menu.findItem(R.id.newspage);
+                    newsItem.setChecked(true);
+
                 } else if (position == 3) {
                     fab.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -128,6 +149,13 @@ public class NewsSection extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+
+                    // Show the NEWS of bottom navigation bar
+                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+                    Menu menu = bottomNavigationView.getMenu();
+                    MenuItem newsItem = menu.findItem(R.id.newspage);
+                    newsItem.setChecked(true);
+
                 }
             }
 

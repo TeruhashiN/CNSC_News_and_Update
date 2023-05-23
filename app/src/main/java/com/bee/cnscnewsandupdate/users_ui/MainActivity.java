@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new SearchFragment());
                     break;
                 case R.id.newspage:
-                    Intent news_intent = new Intent(this, NewsSection.class);
-                    startActivity(news_intent);
+                    startActivity(new Intent(this, NewsSection.class));
                     break;
                 case R.id.settingspage:
                     replaceFragment(new SettingsFragment());

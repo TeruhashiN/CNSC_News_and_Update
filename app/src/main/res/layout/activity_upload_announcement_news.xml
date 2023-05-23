@@ -72,9 +72,9 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/rectangle_border"
+                android:focusable="false"
                 android:gravity="start|center_vertical"
                 android:hint="Date &amp; Time"
-                android:focusable="false"
                 android:padding="16dp" />
 
             <Button
