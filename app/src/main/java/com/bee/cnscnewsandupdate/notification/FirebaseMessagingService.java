@@ -1,4 +1,4 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.notification;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -23,6 +23,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 
+import com.bee.cnscnewsandupdate.R;
 import com.bee.cnscnewsandupdate.login_and_register_system.login_system;
 import com.google.firebase.messaging.RemoteMessage;
 

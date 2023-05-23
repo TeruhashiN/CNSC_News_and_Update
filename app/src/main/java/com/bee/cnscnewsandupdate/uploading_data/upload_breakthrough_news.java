@@ -22,7 +22,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.bee.cnscnewsandupdate.Announcement_data.DataClass;
-import com.bee.cnscnewsandupdate.FcmNotificationsSender;
+import com.bee.cnscnewsandupdate.notification.FcmNotificationsSender;
 import com.bee.cnscnewsandupdate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,21 +32,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import com.google.firebase.ktx.Firebase;
-import com.google.firebase.messaging.FirebaseMessaging;
-
-import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 
 import java.text.DateFormat;
 import java.util.Calendar;

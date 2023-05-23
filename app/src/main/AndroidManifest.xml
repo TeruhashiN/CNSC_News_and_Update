@@ -23,7 +23,7 @@
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
         <activity
-            android:name=".FcmNotificationsSender"
+            android:name=".notification.FcmNotificationsSender"
             android:exported="false" />
         <activity
             android:name=".uploading_data.upload_department_news"
@@ -76,7 +76,7 @@
         </activity>
 
         <service
-            android:name=".FirebaseMessagingService"
+            android:name=".notification.FirebaseMessagingService"
             android:exported="true"
             android:permission="TODO"
             tools:ignore="ExportedService">

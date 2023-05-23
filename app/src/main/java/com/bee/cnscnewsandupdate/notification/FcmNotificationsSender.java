@@ -1,4 +1,4 @@
-package com.bee.cnscnewsandupdate;
+package com.bee.cnscnewsandupdate.notification;
 
 
 import android.app.Activity;
@@ -11,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bee.cnscnewsandupdate.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

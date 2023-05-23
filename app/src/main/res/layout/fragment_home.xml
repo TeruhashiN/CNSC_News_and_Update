@@ -4,21 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F3ED"
     tools:context=".users_ui.HomeFragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <TextView
+    <RelativeLayout
+        android:id="@+id/recyclerRelative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/newsdaily"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="sample muna"/>
+            android:src="@drawable/speakernews_background"/>
 
+        <TextView
+            android:id="@+id/announcement_text"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:text="Announcement"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:paddingBottom="20dp"
+            android:layout_below="@id/newsdaily"
+            android:layout_height="wrap_content"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/announcement_text"
+            android:scrollbars="horizontal" />
 
+        <TextView
+            android:id="@+id/todays_text"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:text="Today's News"
+            android:layout_below="@+id/recyclerView"
+            android:textSize="25sp"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:layout_height="wrap_content"/>
 
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/todays_text"
+            android:id="@+id/recyclerViews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
     </RelativeLayout>
+
 
 </ScrollView>

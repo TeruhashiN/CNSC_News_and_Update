@@ -98,7 +98,7 @@ public class announcement_news extends Fragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
+//        builder.setView(R.layout.progress_layout);
         AlertDialog dialog = builder.create();
         dialog.show();
 
