@@ -1,5 +1,6 @@
 package com.bee.cnscnewsandupdate.users_ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
@@ -43,6 +44,13 @@ public class NewsSection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_section);
+
+
+        // Show the NEWS of bottom navigation bar
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem newsItem = menu.findItem(R.id.newspage);
+        newsItem.setChecked(true);
 
         authProfile = FirebaseAuth.getInstance(); // initialize authProfile
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
@@ -120,11 +128,6 @@ public class NewsSection extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
-                    // Show the NEWS of bottom navigation bar
-                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-                    Menu menu = bottomNavigationView.getMenu();
-                    MenuItem newsItem = menu.findItem(R.id.newspage);
-                    newsItem.setChecked(true);
 
                 } else if (position == 2) {
                     fab.setOnClickListener(new View.OnClickListener() {
@@ -135,11 +138,7 @@ public class NewsSection extends AppCompatActivity {
                         }
                     });
 
-                    // Show the NEWS of bottom navigation bar
-                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-                    Menu menu = bottomNavigationView.getMenu();
-                    MenuItem newsItem = menu.findItem(R.id.newspage);
-                    newsItem.setChecked(true);
+
 
                 } else if (position == 3) {
                     fab.setOnClickListener(new View.OnClickListener() {
@@ -150,11 +149,6 @@ public class NewsSection extends AppCompatActivity {
                         }
                     });
 
-                    // Show the NEWS of bottom navigation bar
-                    BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-                    Menu menu = bottomNavigationView.getMenu();
-                    MenuItem newsItem = menu.findItem(R.id.newspage);
-                    newsItem.setChecked(true);
 
                 }
             }
@@ -193,5 +187,35 @@ public class NewsSection extends AppCompatActivity {
                 return false;
             }
         });
+        // Below code will let you fix the bottom navigation bar
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.newspage:
+                        // Handle click for the "News" tab
+                        // Add your code here for the desired behavior
+                        return true;
+                    case R.id.searchpage:
+                        // Handle click for the "Announcement" tab
+                        Intent announcementIntent = new Intent(NewsSection.this, MainActivity.class);
+                        startActivity(announcementIntent);
+                        return true;
+                    case R.id.homepage:
+                        // Handle click for the "Department News" tab
+                        Intent departmentIntent = new Intent(NewsSection.this, MainActivity.class);
+                        startActivity(departmentIntent);
+                        return true;
+                    case R.id.settingspage:
+                        // Handle click for the "Breakthrough" tab
+                        Intent breakthroughIntent = new Intent(NewsSection.this, MainActivity.class);
+                        startActivity(breakthroughIntent);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+
     }
 }
