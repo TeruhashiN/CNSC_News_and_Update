@@ -102,7 +102,7 @@ public class upload_department_news extends AppCompatActivity {
                 @Override
                 public void onDateSet(DatePicker view1, int year1, int month1, int dayOfMonth) {
                     month1 = month1 + 1;
-                    String date = dayOfMonth + "/" + month1 + "/" + year1;
+                    String date = dayOfMonth + "-" + month1 + "-" + year1;
                     uploadDate.setText(date);
 
                     // Create a TimePickerDialog to allow the user to select a time
@@ -211,7 +211,7 @@ public class upload_department_news extends AppCompatActivity {
 
         DataClass dataClass = new DataClass(title, desc, date, imageURL);
 
-        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+        String currentDate = uploadDate.getText().toString();
 
         FirebaseDatabase.getInstance().getReference("Department News").child(String.valueOf(currentDate))
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {

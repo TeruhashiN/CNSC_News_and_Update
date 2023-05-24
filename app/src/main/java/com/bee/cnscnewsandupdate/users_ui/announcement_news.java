@@ -158,6 +158,3 @@ public class announcement_news extends Fragment {
     }
 
 }
-
-
-

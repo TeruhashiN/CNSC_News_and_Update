@@ -18,7 +18,6 @@ import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-
 import com.bee.cnscnewsandupdate.Announcement_data.DataClass;
 import com.bee.cnscnewsandupdate.Announcement_data.MyAdapter;
 import com.bee.cnscnewsandupdate.R;
@@ -28,21 +27,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
-import java.util.List;
 import java.util.ArrayList;
-
+import java.util.List;
 
 public class HomeFragment extends Fragment {
+
+    private static final int MAX_ITEMS = 4;
 
     List<DatabaseReference> databaseReferences;
     RecyclerView recyclerView, recyclerViews;
     List<DataClass> dataList;
+    List<DataClass> dataListLimited; // List for limited items
     DatabaseReference databaseReference;
     ValueEventListener eventListener;
 
     SearchView searchView;
     MyAdapter adapter;
+    MyAdapter limitedAdapter; // Adapter for limited items
 
     public HomeFragment() {
 
@@ -56,7 +57,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -69,8 +69,6 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
         recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -79,10 +77,6 @@ public class HomeFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
         recyclerViews.setLayoutManager(gridLayoutManager);
 
-
-        recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerViews = view.findViewById(R.id.recyclerViews);
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
@@ -90,18 +84,18 @@ public class HomeFragment extends Fragment {
         dialog.show();
 
         dataList = new ArrayList<>();
+        dataListLimited = new ArrayList<>();
         adapter = new MyAdapter(getContext(), dataList);
+        limitedAdapter = new MyAdapter(getContext(), dataListLimited);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        recyclerViews.setAdapter(adapter);
+        recyclerViews.setAdapter(limitedAdapter);
         recyclerViews.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Announcement News");
         dialog.show();
-
 
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -111,17 +105,23 @@ public class HomeFragment extends Fragment {
                     DataClass dataClass = itemSnapshot.getValue(DataClass.class);
                     dataClass.setKey(itemSnapshot.getKey());
                     dataList.add(dataClass);
+
+                    // Limit the number of items
+                    if (dataListLimited.size() < MAX_ITEMS) {
+                        dataListLimited.add(dataClass);
+                    }
                 }
                 adapter.notifyDataSetChanged();
+                limitedAdapter.notifyDataSetChanged();
                 dialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 dialog.dismiss();
-
             }
         });
+
         DatabaseReference breakthroughNewsRef = FirebaseDatabase.getInstance().getReference("Breakthrough News");
         DatabaseReference announcementNewsRef = FirebaseDatabase.getInstance().getReference("Announcement News");
         DatabaseReference departmentNewsRef = FirebaseDatabase.getInstance().getReference("Department News");
@@ -139,8 +139,14 @@ public class HomeFragment extends Fragment {
                         DataClass dataClass = itemSnapshot.getValue(DataClass.class);
                         dataClass.setKey(itemSnapshot.getKey());
                         dataList.add(dataClass);
+
+                        // Limit the number of items
+                        if (dataListLimited.size() < MAX_ITEMS) {
+                            dataListLimited.add(dataClass);
+                        }
                     }
                     adapter.notifyDataSetChanged();
+                    limitedAdapter.notifyDataSetChanged();
                     dialog.dismiss();
                 }
 
@@ -150,12 +156,5 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
-
     }
-
-
-
 }
-
-
-
