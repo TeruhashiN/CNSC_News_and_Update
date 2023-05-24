@@ -21,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="880dp"
+            android:layout_height="950dp"
             android:layout_marginTop="50dp"
             android:orientation="vertical"
             android:layout_marginEnd="20dp"
@@ -65,6 +65,17 @@
                 android:padding="16dp"
                 android:hint="Description"
                 android:gravity="start|center_vertical" />
+
+            <EditText
+                android:id="@+id/uploadDepartment"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle_border"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/purple_700"
+                android:hint="Department"
+                android:padding="16dp" />
 
             <EditText
                 android:id="@+id/uploadDate"

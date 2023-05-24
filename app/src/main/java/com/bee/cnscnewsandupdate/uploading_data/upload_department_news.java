@@ -45,7 +45,7 @@ public class upload_department_news extends AppCompatActivity {
 
     ImageView uploadImage;
     Button saveButton;
-    EditText uploadTitle, uploadDesc, uploadDate;
+    EditText uploadTitle, uploadDesc, uploadDate, uploadDepartment;
     String imageURL, NotifTitle, NotifMessage;
     Uri uri;
 
@@ -59,6 +59,7 @@ public class upload_department_news extends AppCompatActivity {
         uploadTitle = findViewById(R.id.uploadTitle);
         uploadDesc = findViewById(R.id.uploadDesc);
         uploadDate = findViewById(R.id.uploadDate);
+        uploadDepartment = findViewById(R.id.uploadDepartment);
         saveButton = findViewById(R.id.saveButton);
 
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Manila"));
@@ -144,22 +145,29 @@ public class upload_department_news extends AppCompatActivity {
                 if (uploadTitle.getText().toString().isEmpty() ||
                         uploadDesc.getText().toString().isEmpty() ||
                         uploadDate.getText().toString().isEmpty()) {
-
                     // Show a dialog box with an error message
                     AlertDialog.Builder builder = new AlertDialog.Builder(upload_department_news.this);
                     builder.setMessage("Please fill in all the fields");
                     builder.setPositiveButton("OK", null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
-
                 } else {
+                    appendUploadDepartmentToUploadDesc();
                     saveData();
                 }
             }
         });
 
-
     }
+
+    private void appendUploadDepartmentToUploadDesc() {
+        String departmentText = uploadDepartment.getText().toString();
+        String descText = uploadDesc.getText().toString();
+        String appendedText = descText + "\n\n\n\n\n\n\n\n\n\n" + "FROM " + departmentText + " Department";
+        uploadDesc.setText(appendedText);
+    }
+
+
     public void saveData() {
         if (uploadTitle.getText().toString().isEmpty()) {
             uploadTitle.setError("Title is required");
@@ -167,6 +175,10 @@ public class upload_department_news extends AppCompatActivity {
         }
         if (uploadDesc.getText().toString().isEmpty()) {
             uploadDesc.setError("Description is required");
+            return;
+        }
+        if (uploadDepartment.getText().toString().isEmpty()) {
+            uploadDepartment.setError("Department is required");
             return;
         }
         if (uri == null) {
@@ -208,6 +220,7 @@ public class upload_department_news extends AppCompatActivity {
         String title = uploadTitle.getText().toString();
         String desc = uploadDesc.getText().toString();
         String date = uploadDate.getText().toString();
+        String department = uploadDepartment.getText().toString();
 
         DataClass dataClass = new DataClass(title, desc, date, imageURL);
 

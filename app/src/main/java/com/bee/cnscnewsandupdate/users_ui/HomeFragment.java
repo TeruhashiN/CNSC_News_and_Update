@@ -27,6 +27,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import android.view.View;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.os.Handler;
+import android.os.Looper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,6 +133,17 @@ public class HomeFragment extends Fragment {
                 dialog.dismiss();
             }
         });
+        recyclerView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                int dx = 1100; // Adjust the scroll distance as per your preference
+                recyclerView.smoothScrollBy(dx, 0);
+                recyclerView.postDelayed(this, 3000); // Adjust the delay as per your preference (in milliseconds)
+            }
+        }, 3000); // Delay the initial scroll by 3 seconds (you can adjust the delay as per your preference)
+
+
+
 
         DatabaseReference breakthroughNewsRef = FirebaseDatabase.getInstance().getReference("Breakthrough News");
         DatabaseReference announcementNewsRef = FirebaseDatabase.getInstance().getReference("Announcement News");
@@ -157,4 +180,5 @@ public class HomeFragment extends Fragment {
             });
         }
     }
+
 }

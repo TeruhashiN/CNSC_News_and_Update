@@ -1,14 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".users_ui.SearchFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Search" />
 
-</FrameLayout>
+        tools:context=".users_ui.SearchFragment">
+
+        <LinearLayout
+            android:id="@+id/searchLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/rectangle_searchbar"
+                android:focusable="false"
+                app:closeIcon="@drawable/clear_bar"
+                app:iconifiedByDefault="false"
+                app:queryHint="Search..."
+                app:searchHintIcon="@null"
+                app:searchIcon="@drawable/search_bar" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/searchLayout">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:background="#F7F3ED"
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+                android:scrollbars="vertical" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
