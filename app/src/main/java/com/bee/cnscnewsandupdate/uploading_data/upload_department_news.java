@@ -70,7 +70,7 @@ public class upload_department_news extends AppCompatActivity {
         final int minute = calendar.get(Calendar.MINUTE);
 
         NotifTitle = "Announcement!";
-        NotifMessage = "News has been updated! Check them out.";
+        NotifMessage = "Department News has been updated! Check them out.";
 
 
         ActivityResultLauncher<Intent>activityResultLauncher = registerForActivityResult(
@@ -103,7 +103,7 @@ public class upload_department_news extends AppCompatActivity {
                 @Override
                 public void onDateSet(DatePicker view1, int year1, int month1, int dayOfMonth) {
                     month1 = month1 + 1;
-                    String date = dayOfMonth + "-" + month1 + "-" + year1;
+                    String date = year1 + "-" + month1 + "-" + dayOfMonth;
                     uploadDate.setText(date);
 
                     // Create a TimePickerDialog to allow the user to select a time

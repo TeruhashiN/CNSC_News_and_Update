@@ -71,7 +71,7 @@ public class Upload_announcement_news extends AppCompatActivity {
         final int minute = calendar.get(Calendar.MINUTE);
 
         NotifTitle = "Announcement!";
-        NotifMessage = "News has been updated! Check them out.";
+        NotifMessage = "Announcement News has been updated! Check them out.";
 
 
         ActivityResultLauncher<Intent>activityResultLauncher = registerForActivityResult(

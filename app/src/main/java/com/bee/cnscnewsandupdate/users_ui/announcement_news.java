@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,9 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 
 import com.bee.cnscnewsandupdate.Announcement_data.DataClass;
 import com.bee.cnscnewsandupdate.Announcement_data.MyAdapter;
@@ -28,10 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
-import java.util.List;
 import java.util.ArrayList;
-
+import java.util.List;
 
 public class announcement_news extends Fragment {
     RecyclerView recyclerView;
@@ -54,7 +48,6 @@ public class announcement_news extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -83,30 +76,20 @@ public class announcement_news extends Fragment {
             }
         });
 
-
         recyclerView = view.findViewById(R.id.recyclerView);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
-        recyclerView.setLayoutManager(gridLayoutManager);
-
-        searchView = view.findViewById(R.id.search);
-        if (searchView != null) {
-            searchView.clearFocus();
-        }
-
-
-        recyclerView = view.findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(false);
-//        builder.setView(R.layout.progress_layout);
         AlertDialog dialog = builder.create();
         dialog.show();
 
         dataList = new ArrayList<>();
         adapter = new MyAdapter(getContext(), dataList);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Announcement News");
         dialog.show();
@@ -127,11 +110,12 @@ public class announcement_news extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 dialog.dismiss();
-
             }
         });
 
+        searchView = view.findViewById(R.id.search);
         if (searchView != null) {
+            searchView.clearFocus();
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
@@ -149,12 +133,11 @@ public class announcement_news extends Fragment {
 
     public void searchList(String text) {
         ArrayList<DataClass> searchList = new ArrayList<>();
-        for (DataClass dataClass: dataList) {
+        for (DataClass dataClass : dataList) {
             if (dataClass.getDataTitle().toLowerCase().contains(text.toLowerCase())) {
                 searchList.add(dataClass);
             }
         }
         adapter.searchDateList(searchList);
     }
-
 }
