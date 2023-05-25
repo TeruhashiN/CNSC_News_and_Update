@@ -81,17 +81,13 @@ public class breakthrough_news extends Fragment {
         });
 
 
-        recyclerView = view.findViewById(R.id.recyclerView);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
-        recyclerView.setLayoutManager(gridLayoutManager);
-
-        searchView = view.findViewById(R.id.search);
-        if (searchView != null) {
-            searchView.clearFocus();
-        }
 
 
         recyclerView = view.findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(false);
@@ -102,7 +98,6 @@ public class breakthrough_news extends Fragment {
         dataList = new ArrayList<>();
         adapter = new MyAdapter(getContext(), dataList);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Breakthrough News");
@@ -127,8 +122,9 @@ public class breakthrough_news extends Fragment {
 
             }
         });
-
+        searchView = view.findViewById(R.id.search);
         if (searchView != null) {
+            searchView.clearFocus();
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
@@ -146,7 +142,7 @@ public class breakthrough_news extends Fragment {
 
     public void searchList(String text) {
         ArrayList<DataClass> searchList = new ArrayList<>();
-        for (DataClass dataClass: dataList) {
+        for (DataClass dataClass : dataList) {
             if (dataClass.getDataTitle().toLowerCase().contains(text.toLowerCase())) {
                 searchList.add(dataClass);
             }

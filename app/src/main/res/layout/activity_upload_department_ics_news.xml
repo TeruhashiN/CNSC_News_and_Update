@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".uploading_data.Upload_departmentICS_news">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="950dp"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="20dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ICS Department News"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="30sp" />
+
+            <ImageButton
+                android:id="@+id/uploadImage"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/purple_border"
+                android:scaleType="fitXY"
+                android:src="@drawable/uploading_image" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/uploadTitle"
+                android:background="@drawable/rectangle_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Heading"
+                android:gravity="start|center_vertical" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/uploadDesc"
+                android:background="@drawable/rectangle_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Description"
+                android:gravity="start|center_vertical" />
+
+            <EditText
+                android:id="@+id/uploadDepartment"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle_border"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/purple_700"
+                android:hint="Department"
+                android:padding="16dp" />
+
+            <EditText
+                android:id="@+id/uploadDate"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle_border"
+                android:gravity="start|center_vertical"
+                android:hint="Date &amp; Time"
+                android:focusable="false"
+                android:padding="16dp" />
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/gray"
+                android:text="Upload"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</ScrollView>

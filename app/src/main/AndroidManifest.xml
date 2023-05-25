@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CNSCNewsAndUpdate"
         tools:targetApi="31">
+        <activity
+            android:name=".Upload_departmentICS_news"
+            android:exported="false" />
         <activity
             android:name=".notification.FcmNotificationsSender"
             android:exported="false" />
