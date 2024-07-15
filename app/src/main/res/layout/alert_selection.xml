@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="16dp">
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cashier"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="18sp"
+            android:paddingHorizontal="16dp"/>
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GCash"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="18sp"
+            android:paddingHorizontal="16dp"/>
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/schedule_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColorHint="@android:color/tertiary_text_light"
+        app:boxCornerRadiusBottomEnd="32dp"
+        app:boxCornerRadiusBottomStart="32dp"
+        app:boxCornerRadiusTopEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        app:boxCornerRadiusTopStart="32dp"
+        app:boxStrokeColor="@color/purple_700"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/purple_700">
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/schedule"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:imeOptions="actionDone"
+            android:hint="Schedule"
+            android:completionThreshold="1"
+            android:inputType="text"
+            android:textColor="@android:color/secondary_text_light"
+            android:textColorHint="@android:color/tertiary_text_light"
+            android:textCursorDrawable="@null"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/account_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@android:color/tertiary_text_light"
+        app:boxCornerRadiusBottomEnd="32dp"
+        app:boxCornerRadiusBottomStart="32dp"
+        app:boxCornerRadiusTopEnd="32dp"
+        app:boxCornerRadiusTopStart="32dp"
+        app:boxStrokeColor="@color/purple_700"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/purple_700">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/account"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Account No."
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:textColor="@android:color/secondary_text_light"
+            android:textColorHint="@android:color/tertiary_text_light"
+            android:textCursorDrawable="@null"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:textColorHint="@android:color/tertiary_text_light"
+        app:boxCornerRadiusBottomEnd="32dp"
+        app:boxCornerRadiusBottomStart="32dp"
+        app:boxCornerRadiusTopEnd="32dp"
+        app:boxCornerRadiusTopStart="32dp"
+        app:boxStrokeColor="@color/purple_700"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/purple_700">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Account Name"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textColor="@android:color/secondary_text_light"
+            android:textColorHint="@android:color/tertiary_text_light"
+            android:textCursorDrawable="@null"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

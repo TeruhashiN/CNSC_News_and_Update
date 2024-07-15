@@ -28,22 +28,21 @@ public class MainActivity extends AppCompatActivity {
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
-
                 case R.id.homepage:
                     replaceFragment(new HomeFragment());
                     break;
                 case R.id.searchpage:
                     replaceFragment(new SearchFragment());
                     break;
+                case R.id.scholarships:
+                    replaceFragment(new ScholarshipsFragment());
+                    break;
                 case R.id.newspage:
-                    startActivity(new Intent(this, NewsSection.class));
+                    replaceFragment(new NewsFragment());
                     break;
                 case R.id.settingspage:
                     replaceFragment(new SettingsFragment());
                     break;
-
-
-
             }
             return true;
         });

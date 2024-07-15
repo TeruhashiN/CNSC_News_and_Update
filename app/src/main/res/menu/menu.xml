@@ -10,6 +10,10 @@
         android:icon="@drawable/search_foreground"
         android:id="@+id/searchpage"/>
 
+    <item android:title="Scholarships"
+        android:icon="@drawable/baseline_school_24"
+        android:id="@+id/scholarships"/>
+
     <item android:title="News"
         android:icon="@drawable/news_foreground"
         android:id="@+id/newspage"/>

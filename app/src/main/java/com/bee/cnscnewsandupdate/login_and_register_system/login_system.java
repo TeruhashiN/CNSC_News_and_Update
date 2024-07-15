@@ -24,6 +24,8 @@ import android.widget.Toast;
 import com.bee.cnscnewsandupdate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -46,6 +48,21 @@ public class login_system extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_system);
+
+        FirebaseOptions options = new FirebaseOptions.Builder()
+                .setProjectId("cnsc-news-and-update-971f1")
+                .setApplicationId("1:297824916976:android:aab803bdb992cdbd67b935")
+                .setApiKey("AIzaSyD229iE1XExSYz0NRZEoMPLJsXBVi7_IhE")
+                .build();
+        FirebaseApp.initializeApp(this, options);
+
+        FirebaseOptions options2 = new FirebaseOptions.Builder()
+                .setProjectId("educasst-2d432")
+                .setApplicationId("1:371656876607:android:afb3a4085d4b2ff1b94e8a")
+                .setApiKey("AIzaSyD2J4IiyqFYL5mfXAniUubFN64zY816rd8")
+                .setStorageBucket("educasst-2d432.appspot.com")
+                .build();
+        FirebaseApp.initializeApp(this, options2, "educasst");
 
         create_account_text = (TextView) findViewById(R.id.register_account_text);
 
@@ -179,6 +196,8 @@ public class login_system extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+
         if (authProfile.getCurrentUser() != null) {
             Toast.makeText(this, "You are already logged in", Toast.LENGTH_SHORT).show();
 

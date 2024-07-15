@@ -68,6 +68,12 @@
             android:name=".users_ui.SettingsFragment"
             android:exported="false" />
         <activity
+            android:name=".ScholarshipActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScanActivity"
+            android:exported="false" />
+        <activity
             android:name=".login_and_register_system.login_system"
             android:exported="true">
             <intent-filter>
