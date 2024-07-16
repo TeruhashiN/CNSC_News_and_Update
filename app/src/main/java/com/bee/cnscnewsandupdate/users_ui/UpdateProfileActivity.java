@@ -176,7 +176,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
             textMobile = editTextUpdateMobile.getText().toString();
 
             // enter the data into the firebase realtime database
-            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB, textGender, textMobile);
+            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB, textGender, textMobile, null);
 
             // extract user reference from the database registered user
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Usesrs");

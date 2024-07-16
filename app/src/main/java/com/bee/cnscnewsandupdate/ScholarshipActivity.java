@@ -23,14 +23,18 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bee.cnscnewsandupdate.login_and_register_system.ReadWriteUserDetails;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -44,8 +48,11 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -60,10 +67,11 @@ public class ScholarshipActivity extends AppCompatActivity {
     private Gson gson;
     private List<String> uris = new ArrayList<>();
     private RequirementsFragment requirementsFragment;
-    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth, cnscFirebaseAuth;
     private FirebaseStorage firebaseStorage;
     private ProgressDialog progressDialog;
     private boolean alreadyApplied = false;
+    private ReadWriteUserDetails readUserDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +80,39 @@ public class ScholarshipActivity extends AppCompatActivity {
         final FirebaseApp secondary = FirebaseApp.getInstance("educasst");
         firebaseFirestore = FirebaseFirestore.getInstance(secondary);
         firebaseStorage = FirebaseStorage.getInstance(secondary);
-        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance(secondary);
+        cnscFirebaseAuth = FirebaseAuth.getInstance();
         context = getApplicationContext();
         gson = new Gson();
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait..");
         progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
+        referenceProfile.child(cnscFirebaseAuth.getCurrentUser().getUid()).get().addOnCompleteListener(task -> {
+            if (task.getException() != null) {
+                Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                finish();
+                return;
+            }
+
+            if (task.isSuccessful()) {
+                readUserDetails = task.getResult().getValue(ReadWriteUserDetails.class);
+                if (readUserDetails == null) {
+                    Toast.makeText(context, "Failed to get user data", Toast.LENGTH_SHORT).show();
+                    finish();
+                    return;
+                }
+
+                if (readUserDetails.educasstId == null) {
+                    registerUser();
+                } else {
+                    signinUser();
+                }
+            }
+        });
 
         final AppCompatImageView back = findViewById(R.id.back);
         back.setOnClickListener(v -> {
@@ -99,6 +134,12 @@ public class ScholarshipActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(scholarshipPager);
 
+        uris.add("");
+        uris.add("");
+        uris.add("");
+    }
+
+    private void init() {
         final TextView info = findViewById(R.id.info);
         final String uid = firebaseAuth.getCurrentUser().getUid();
         alreadyApplied = scholarship.getApplicants().contains(uid);
@@ -122,10 +163,6 @@ public class ScholarshipActivity extends AppCompatActivity {
                 info.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_red_dark));
             }
         }
-
-        uris.add("");
-        uris.add("");
-        uris.add("");
     }
 
     private void selectMode() {
@@ -385,6 +422,130 @@ public class ScholarshipActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+
+    private void signinUser() {
+        final FirebaseUser currentUser = cnscFirebaseAuth.getCurrentUser();
+
+        firebaseAuth.signInWithEmailAndPassword(currentUser.getEmail(), "default123").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.getException() != null) {
+                    Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                    finish();
+                    return;
+                }
+
+                if (task.isSuccessful()) {
+                    checkUser();
+                }
+            }
+        });
+    }
+
+    private void checkUser() {
+        firebaseFirestore.collection("Users").document(readUserDetails.educasstId).get().addOnCompleteListener(task -> {
+            if (task.getException() != null) {
+                createUser();
+            }
+
+            if (task.isSuccessful()) {
+                if (!task.getResult().exists()) {
+                    createUser();
+                } else {
+                    init();
+                    progressDialog.dismiss();
+                }
+            }
+        });
+    }
+
+    private void registerUser() {
+        final FirebaseUser currentUser = cnscFirebaseAuth.getCurrentUser();
+
+        firebaseAuth.createUserWithEmailAndPassword(currentUser.getEmail(), "default123").addOnCompleteListener(task -> {
+            if (task.getException() != null) {
+                Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                finish();
+                return;
+            }
+
+            if (task.isSuccessful()) {
+                createUser();
+            }
+        });
+    }
+
+    public int calculateAge(Date birthDate) {
+        Calendar birth = Calendar.getInstance();
+        birth.setTime(birthDate);
+
+        Calendar today = Calendar.getInstance();
+
+        int age = today.get(Calendar.YEAR) - birth.get(Calendar.YEAR);
+
+        if (today.get(Calendar.DAY_OF_YEAR) < birth.get(Calendar.DAY_OF_YEAR)) {
+            age--;
+        }
+
+        return age;
+    }
+
+    private void createUser() {
+        final FirebaseUser currentUser = cnscFirebaseAuth.getCurrentUser();
+
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            final Date bdate = format.parse(readUserDetails.doB);
+
+            final Map<String, Object> userData = new HashMap<>();
+            userData.put("address", "");
+            userData.put("age", calculateAge(bdate));
+            userData.put("birthdate", bdate);
+            userData.put("contact", readUserDetails.mobile);
+            userData.put("email", currentUser.getEmail());
+            userData.put("name", currentUser.getDisplayName());
+            userData.put("sex", readUserDetails.gender);
+            userData.put("type", "student");
+
+            firebaseFirestore.collection("Users").document(firebaseAuth.getCurrentUser().getUid())
+                .set(userData).addOnCompleteListener(task -> {
+                if (task.getException() != null) {
+                    progressDialog.dismiss();
+                    Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
+                    return;
+                }
+
+                if (task.isSuccessful()) {
+                    updateCnscDb();
+                }
+            });
+        } catch (ParseException e) {
+            progressDialog.dismiss();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    }
+
+    private void updateCnscDb() {
+        final Map<String, Object> data = new HashMap<>();
+        data.put("educasstId", firebaseAuth.getCurrentUser().getUid());
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
+        referenceProfile.child(cnscFirebaseAuth.getCurrentUser().getUid()).updateChildren(data).addOnCompleteListener(task -> {
+            if (task.getException() != null) {
+                Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                return;
+            }
+
+            if (task.isSuccessful()) {
+                init();
+                progressDialog.dismiss();
+            }
+        });
     }
 
     private void write(List<String> downloadUris) {
