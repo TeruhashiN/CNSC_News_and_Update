@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/educasst_bg"
+        android:scaleType="centerCrop"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/purple_700"
+        android:alpha="0.6"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="16dp"
+            android:layout_margin="24dp">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif-medium"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_secondary"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:text="Academic Requirements"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="a. Qualified Incoming Freshmen Students"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="- certified true copy of Senior High School Report Card and Certificate of Registration (COR) of school currently enrolled"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="b. For applicants with Earned Units un College in CHED - recognized programs of Private HEIs, LUCs and SUCs with COPC"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="- duly certified true copy of grades for the latest term/semester attended and COR of school currently enrolled."
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/white"
+                    android:text="c. For Other Applicants"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="16dp"
+                    android:text="c.1 ALS Passer"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="16dp"
+                    android:text="- duly certified copy of ALS Accreditation and Equivalency TEST Passer Certificate and COR of the school currently enrolled;"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="16dp"
+                    android:text="c.2 Philippine  Educational Placement Test (PEPT) Passer"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="16dp"
+                    android:text="- duly certified copy of PEPT Certificate advancing to the next level and COR of school currently enrolled."
+                    android:textSize="14sp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/bg_button_white"
+                    android:textColor="@android:color/secondary_text_light"
+                    android:text="Next"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="24dp"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/educasst_bg"
+        android:scaleType="centerCrop"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/purple_700"
+        android:alpha="0.6"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="16dp"
+            android:layout_margin="24dp">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif-medium"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_secondary"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:text="Income Requirement"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="16dp"
+                    android:text="The student-applicant shall submit ANY one of the following;"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="8dp"
+                    android:text="a. Latest copy of contract or proof of income, for the children of Overseas Filipino Workers and seaferarers;"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="8dp"
+                    android:text="b. Case Study prepared and issued by the Municipal Social Welfare and Development Officer who must be a licensed social worker"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="8dp"
+                    android:text="c. Latest Income Tax Return and Bureau of Internal  Revenue Form 2316 for fixed income earners of parents/guardians, if employed; or"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="8dp"
+                    android:text="d. Certificate of Tax Exemption from the BIR and parents or guradians, if not employed."
+                    android:textSize="14sp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/bg_button_white"
+                    android:textColor="@android:color/secondary_text_light"
+                    android:text="Apply Now!"
+                    android:layout_gravity="end"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginTop="24dp"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
